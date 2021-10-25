@@ -6,6 +6,10 @@ package edu.nwmissouri.zoo10group;
  */
 public class Branchiosaurus extends Animal implements Runnable {
 
+    public Branchiosaurus(String name) {
+        super(name);
+    }
+    
     @Override
     public void run() {
  

@@ -6,6 +6,10 @@ package edu.nwmissouri.zoo10group;
  */
 public class Glyptodon extends Animal implements Runnable {
 
+    public Glyptodon(String name) {
+        super(name);
+    }
+        
     @Override
     public void run() {
  

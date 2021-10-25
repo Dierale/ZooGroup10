@@ -6,6 +6,10 @@ package edu.nwmissouri.zoo10group;
  */
 public class BlackPanther extends Animal implements Runnable {
 
+    public BlackPanther(String name) {
+        super(name);
+    }
+    
     @Override
     public void run() {
  
