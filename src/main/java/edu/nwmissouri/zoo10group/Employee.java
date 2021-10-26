@@ -9,16 +9,9 @@ public abstract class Employee extends Person {
     protected PaymentType employeePaymentType;
     protected double paymentRate;
     protected double hoursWorked;
-    
-    public Employee() {
-        this.employeePaymentType = PaymentType.UNKNOWN;
-        this.paymentRate = 0;
-        this.hoursWorked = 0;
-    }
-    
-    public String getPersonType() {
-        return this.getClass().getSimpleName();
-    }
+    protected String[] animalList = {
+      "Black Panther", "Branchiosaurus", "Elephant Bird", "Glyptodon", "Griffin"  
+    };
     
     public PaymentType getPaymentType() {
         return this.employeePaymentType;
@@ -44,6 +37,21 @@ public abstract class Employee extends Person {
     
     public double calculateYearlyPay() {
         return (calculateMonthlyPay() * 12);
+    }
+    
+    protected String[] getAnimalList() {
+        return this.animalList;
+    }
+    
+    protected String getAnimalFromList( int index) {
+        int length = this.animalList.length;
+        if (index >= 0 && index < length) {
+            return this.animalList[index];
+        } else if (index < 0 ) {
+            return this.animalList[0];
+        } else {
+            return this.animalList[length-1];
+        }
     }
     
 }
