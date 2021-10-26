@@ -8,5 +8,6 @@ package edu.nwmissouri.zoo10group;
 public enum AnimalGender {
     MALE,
     FEMALE,
-    OTHER
+    OTHER,
+    UNKNOWN
 }
