@@ -43,22 +43,40 @@ public class Griffin extends Animal implements Runnable {
      * speak() - Presents the types of sounds made by the Griffin
      */
     @Override
-    public void speak() {
-        System.out.println("I'm a Griffin and I chirp like a bird, but I can "
-                + "trumpet loudly if angry.");
+    public String speak() {
+        String spoken = "I'm a Griffin and I chirp like a bird, but I can "
+                + "trumpet loudly if angry.";
+        return spoken;
     }
 
     /**
      * move() - Describes the general type of movement the animal Griffin
      */
     @Override
-    public void move() {
-        System.out.println("I can walk but I really enjoy flying through the sky.");
+    public String move() {
+        String movement = "I can walk but I really enjoy flying through the sky.";
+        return movement;
     }
 
     @Override
     public void run() {
- 
+        System.out.println("Hello, my name is : " + getName() + "!");
+
+        System.out.println(speak());
+        System.out.println(move());
+
+        System.out.println("\nMy species is called " + getSpeciesName());;
+        System.out.println("Sometimes I'm referred to as the species: " + getLatinName());
+        System.out.println("My preferred habit is: " + getLocationFound());
+        System.out.println("When I get tired I like to sleep for " + getSleepDuration() + " hours");
+        System.out.println("When I'm really speeding along I max out at "
+                + getMovementSpeed() + " mph");
+
+        String isFound = (getIsExtinct()) ? "yes" : "no";
+        System.out.println("Can you find me out in the wild? The answer is "
+                + isFound);
+        System.out.println(speak());
+        System.out.println(move());
     }
     
     /******************************

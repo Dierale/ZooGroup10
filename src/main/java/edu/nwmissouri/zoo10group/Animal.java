@@ -33,15 +33,15 @@ public abstract class Animal {
     /**
      * speak() - general method for animal utterance
      */
-    public void speak() {
-        System.out.println("Generic animal sound");
+    public String speak() {
+        return "Generic animal sound";
     }
 
     /**
      * move() - general method for animal movement
      */
-    public void move() {
-        System.out.println("Generic animal movement");
+    public String move() {
+        return "Generic animal movement";
     }
 
     /**
