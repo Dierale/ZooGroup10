@@ -2,11 +2,11 @@ package edu.nwmissouri.zoo10group;
 
 /**
  *
- * @author S503330
+ * @author Alex Dieringer
  */
 public class Griffin extends Animal implements Runnable {
 
-        /**
+    /**
      * Define variables to hold data about the Griffin class May refactor
      * variables into super class To be used in additional methods added later
      */
