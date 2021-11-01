@@ -1,16 +1,13 @@
 package edu.nwmissouri.zoo10group;
 
-/**
- *
- * @author S503330
- */
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
 public class ZooApp {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
-    
+	public static void main(String[] args) {
+		SpringApplication.run(ZooApp.class, args);
+	}
+
 }
