@@ -1,6 +1,6 @@
-# ZooGroup10
+# ZooApp Group Project for Group 10
 
-Assignment 7 Group Project for OOP Section 5
+CS44542 Section 5 (OOP) - Assignments 7 & 8
 
 Project Contributors:
  - [Alex Dieringer](https://github.com/Dierale)
