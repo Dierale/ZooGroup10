@@ -7,7 +7,7 @@ Project Contributors:
  - [Manish Goud Bandharapu](https://github.com/919610362)
  - [Hemanth Kumar Reddy Pidaparathy](https://github.com/Hemanthkumarreddy)
  - [Hemanth Sai Reddy Velamuri](https://github.com/hemanthsaireddyvelamuri)
- - Jayanth Naramsetty
+ - [Jayanth Naramsetty](https://github.com/jayanthnaramsetty)
 
 ---
 
