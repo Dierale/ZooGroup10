@@ -1,13 +1,13 @@
-# ZooGroup10
+# ZooApp Group Project for Group 10
 
-Assignment 7 Group Project for OOP Section 5
+CS44542 Section 5 (OOP) - Assignments 7 & 8
 
 Project Contributors:
  - [Alex Dieringer](https://github.com/Dierale)
  - [Manish Goud Bandharapu](https://github.com/919610362)
  - [Hemanth Kumar Reddy Pidaparathy](https://github.com/Hemanthkumarreddy)
  - [Hemanth Sai Reddy Velamuri](https://github.com/hemanthsaireddyvelamuri)
- - Jayanth Naramsetty
+ - [Jayanth Naramsetty](https://github.com/jayanthnaramsetty)
 
 ---
 
