@@ -13,12 +13,13 @@ public class Caretaker extends Employee {
     
     public Caretaker() {
         Random rand = new Random();
-        int choice = rand.nextInt(animalList.length + 1) + 1;
+        String myList[] = Animal.getAnimalList();
+        int choice = rand.nextInt(myList.length + 1) + 1;
         
         this.employeePaymentType = PaymentType.SALARY;
         this.paymentRate = 65000;
         this.hoursWorked = 40;
-        this.myAnimal = getAnimalFromList(choice);
+        this.myAnimal = myList[choice];
     }
     
     public Caretaker( String myAnimal) {    

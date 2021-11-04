@@ -73,4 +73,22 @@ public abstract class Animal {
         this.gender = gender;
     }
 
+    public static String[] getAnimalList() {
+        String[] animalList = {
+            "Black Panther", "Brachiosaurus", "Elephant Bird", "Glyptodon", "Griffin"
+        };
+        return animalList;
+    }
+
+    public String getAnimalFromList(int index) {
+        String myList[] = getAnimalList();
+        int length = myList.length;
+        if (index >= 0 && index < length) {
+            return myList[index];
+        } else if (index < 0) {
+            return myList[0];
+        } else {
+            return myList[length - 1];
+        }
+    }
 }
