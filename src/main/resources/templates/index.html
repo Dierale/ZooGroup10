@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+    <head> 
+        <title>542 Zoo</title> 
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../resources/css/zooAppStyle.css">
+
+        <!-- ul a flex container, set the flex-direction to row, 
+        allow it to wrap by applying flex-wrap: wrap and set a gap -->
+        <style>
+            main {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="contentMain" class="px-4 py-5 my-5 text-center">
+            <p th:text="'Hello, ' + ${name} + '!'" />
+            <h1 th:text="${greeting}" />
+            <p th:text="'We have ' + ${animalMap.size()} + ' animals. Take a look:'" />
+
+            <aside th:if = "${id} >= 1">
+                <hr>
+                <p  th:text="${id} + ' ' + ${animalMap.get( __${id}__)}">
+                <p th:text="${customAnimalGroup}" />
+            </aside>
+
+            <hr>
+
+            <main id="zooList">
+                <th:block th:each="entry: ${animalMap}">
+                    <a class="col-2" th:href="@{/(id=${entry.key})}"> [[${entry.key}]]-[[${entry.value}]]</a> 
+                </th:block>
+            </main>
+
+            <hr>
+            <p><a href="/about">About Us</a></p> 
+            <hr>
+            <p><a href="https://github.com/Dierale/ZooGroup10" class="btn btn-success"><i class="fa fa-github"> </i> Check out our code on GitHub</a> </p>
+        </div>
+    </body>
+</html>
+
+
+
+
+

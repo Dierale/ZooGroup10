@@ -13,7 +13,8 @@ public class Curator extends Employee {
     
     public Curator() {
         Random rand = new Random();
-        int max = animalList.length;
+        String myList[] = Animal.getAnimalList();
+        int max = myList.length;
         int choice = rand.nextInt(max + 1) + 1;
         int choice2 = choice;
         
@@ -21,8 +22,8 @@ public class Curator extends Employee {
             choice2 = rand.nextInt(max + 1) + 1;
         }
         String[] exhibits = new String[2];
-        exhibits[0] = getAnimalFromList(choice);
-        exhibits[1] = getAnimalFromList(choice2);
+        exhibits[0] = myList[choice];
+        exhibits[1] = myList[choice2];
         
         this.employeePaymentType = PaymentType.HOURLY;
         this.paymentRate = 25;
