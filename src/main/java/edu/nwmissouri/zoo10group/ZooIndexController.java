@@ -85,6 +85,7 @@ public class ZooIndexController {
         model.addAttribute("employeeName", getEmployeeName(typeParam));
         model.addAttribute("employeeDescription", getEmployeeDescription(typeParam));
         model.addAttribute("employeeDetails", getEmployeeDetails(typeParam));
+        model.addAttribute("employeeAnimals", getEmployeeAnimals(typeParam));
         return "employee";
     }
 
@@ -170,6 +171,30 @@ public class ZooIndexController {
      */
     public static Map<Integer, String> getAllAnimalMap() {
         String[] animals = Animal.getAnimalList();
+        int animalCount = animals.length;
+        Map animalMap = Collections.synchronizedMap(new TreeMap<Integer, String>());
+
+        for (int n = 0; n < animalCount; n++) {
+            animalMap.put((n + 1), animals[n]);
+        }
+        return animalMap;
+    }
+    
+    public static Map<Integer, String> getEmployeeAnimals(String eType) {
+        String[] animals = new String[1];
+        switch( eType) {
+            case "curator" -> {
+                Curator cur = new Curator();
+                animals = cur.getExhibits();
+            }
+            case "caretaker" -> {
+                Caretaker caret = new Caretaker();
+                animals[0] = caret.getAnimalAssignment();
+            }
+            default -> {
+                animals[0] = "";
+            }
+        }
         int animalCount = animals.length;
         Map animalMap = Collections.synchronizedMap(new TreeMap<Integer, String>());
 

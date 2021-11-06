@@ -13,6 +13,7 @@
             <br>
             
             <div class="row">
+                <div class="col-sm-1"></div>
                 <div id="empSidebar" class="col-sm-3">
                     <div class="sidebar">
                         <ul class="navbar-nav flex-column">
@@ -25,7 +26,7 @@
                         </ul>
                     </div>
                 </div>
-                <div id="empContent" class="col-sm-6">
+                <div id="empContent" class="col-sm-4">
                     <h4 th:text="${employeeName}" />
                     <hr>
                     <p th:utext="${employeeDescription}" />
@@ -35,7 +36,13 @@
                     <hr>
                     <p th:utext="${employeeDetails}" />
                 </div>
-                <div class="col-sm-3"></div>
+                <div class="col-sm-4">
+                    <h4>Exhibits Assigned:</h4>
+                    <hr class="hr-small hr-center">
+                    <th:block th:each="entry: ${employeeAnimals}">
+                        <p th:href="@{/(id=${entry.key})}">[[${entry.value}]]</p> 
+                    </th:block>
+                </div>
             </div>
             <br>
             <hr>
