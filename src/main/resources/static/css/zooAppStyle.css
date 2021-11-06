@@ -50,6 +50,9 @@ main {
     list-style: none;
 }
 #animalDescription-container {
+    width: 94%;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 15px;
 }
 
@@ -60,6 +63,11 @@ main {
 #animalDescription-container .card .container h4 {
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+
+#zooList {
+    margin-top: 20px;
 }
 
 body hr {
@@ -86,8 +94,4 @@ hr.hr-center {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-}
-
-#zooList {
-    margin-top: 20px;
 }

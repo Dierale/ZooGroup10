@@ -19,16 +19,15 @@
             <hr class="hr-large hr-center">
             <div class="row">
                 <h5>Select an animal to view it's exhibit</h5>
-                <main id="zooList">
+                <main id="zooList" class="row justify-content-center">
                     <th:block th:each="entry: ${animalMap}">
-                        <a class="col-2" th:href="@{/visitor(visitorType=${type},id=${entry.key})}"> [[${entry.key}]]-[[${entry.value}]]</a> 
+                        <a class="col-sm-2" th:href="@{/visitor(visitorType=${type},id=${entry.key})}"> [[${entry.key}]]-[[${entry.value}]]</a> 
                     </th:block>
                 </main>
             </div>
             <br>
             <div id="animalDescription-container" class="row">
                 <aside th:if = "${id} >= 1">
-                    <hr class="hr-large hr-center">
                     <br>
                     <div class="row">
                         <div class="col-sm-1"></div>
