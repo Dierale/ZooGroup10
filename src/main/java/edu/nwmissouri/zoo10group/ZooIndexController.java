@@ -11,6 +11,8 @@ import java.lang.reflect.Method;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -28,27 +30,35 @@ public class ZooIndexController {
     private static final String GOODBYE_MESSAGE = "Thank you for visiting Group 10's Zoo!";
     private static final int ANIMAL_TOTAL = 5;
 
+
     /**
-     * The @GetMapping annotation ensures that HTTP GET requests to / are mapped
-     * to the index() method.Example:
-     * https://spring.io/guides/gs/serving-web-content/
+     * Map GET request to "/" to index().
      *
-     *
-     * @param idParam - the id provided in the URL
-     * @param model - the model that holds information from controller to view
-     * @return
+     * @return filename from src/main/resources/templates folder
      */
     @GetMapping(path = "/")
-    public String index(
+    public String index() {
+        return "index";
+    }
+    
+    
+    /**
+     * Map GET request to "/zoo" to zoo().
+     *
+     * @param idParam - the animal's ID
+     * @param model - the model that holds info from controller to view
+     * @return filename from src/main/resources/templates folder
+     */
+    @GetMapping(path = "/zoo")
+    public String zoo(
             @RequestParam(name = "id", required = false, defaultValue = "0") String idParam,
             Model model) {
         model.addAttribute("id", idParam);
-        model.addAttribute("name", "World");
         model.addAttribute("greeting", GREETING_MESSAGE);
         model.addAttribute("animalMap", getAllAnimalMap());
-        model.addAttribute("customAnimalGroup", getCustomAnimalGroup(idParam));
+        model.addAttribute("animalOutput", getAnimalOutput(idParam));
         // associated with index.hmtl in src/main/resources/templates
-        return "index";
+        return "zoo";
     }
 
     /**
@@ -62,40 +72,48 @@ public class ZooIndexController {
     }
 
     /**
-     * Map GET request to "/employee" to user().
+     * Map GET request to "/employee" to employee().
      *
+     * @param typeParam - the type of person provided in the URL
+     * @param model - the model that holds info from controller to view
      * @return filename from src/main/resources/templates folder
      */
     @GetMapping(path = "/employee")
-    public String employee() {
+    public String employee(
+        @RequestParam(name = "employeeType", required = true) String typeParam, Model model) {
+        model.addAttribute("type", typeParam);
+        model.addAttribute("employeeName", getEmployeeName(typeParam));
+        model.addAttribute("employeeDescription", getEmployeeDescription(typeParam));
+        model.addAttribute("employeeDetails", getEmployeeDetails(typeParam));
         return "employee";
     }
 
     /**
-     * Map GET request to "/visitor" to user().
+     * Map GET request to "/visitor" to visitor().
      *
+     * @param visitorTypeParam - the type of person provided in the URL
+     * @param idParam
+     * @param model - the model that holds info from controller to view
      * @return filename from src/main/resources/templates folder
      */
     @GetMapping(path = "/visitor")
-    public String visitor() {
+    public String visitor(
+        @RequestParam(name = "visitorType", required = false, defaultValue = "guest") String visitorTypeParam,
+        @RequestParam(name = "id", required = false, defaultValue = "0") String idParam, Model model) {
+        model.addAttribute("id", idParam);
+        model.addAttribute("type", visitorTypeParam);
+        model.addAttribute("payment", getVisitorPayment(visitorTypeParam));
+        model.addAttribute("animalMap", getAllAnimalMap());
+        model.addAttribute("animalOutput", getAnimalOutput(idParam));
         return "visitor";
     }
 
     /**
-     * 76 Map GET request to "/zoo" to user().
-     *
-     * @param empTypeParam - the type of employee provided in the URL
-     * @param model - the model that holds info from controller to view
-     * @return filename from src/main/resources/templates folder
+     * Dynamically calls an Animal's run() function by class name
+     * 
+     * @param className     The name of the Animal Class we want
+     * @param animalName    The animal's name required in its constructor
      */
-    @GetMapping(path = "/zoo")
-    public String zoo(
-            @RequestParam(name = "type", required = false, defaultValue = "visitor") String empTypeParam, Model model) {
-        model.addAttribute("type", empTypeParam);
-        // filename for return path
-        return "zoo";
-    }
-
     private static void callAnimalRun(String className, String animalName) {
         String myPackage = "edu.nwmissouri.zoo10group";
         Class[] cArg = new Class[1];
@@ -113,7 +131,14 @@ public class ZooIndexController {
         }
     }
 
-    private String getCustomAnimalGroup(String id) {
+    /**
+     * Gets the output of the animal's run() function
+     * Puts it in its own output stream to return to the view
+     * 
+     * @param id    The index of the animal we want
+     * @return      The output of the run() function as a string from the printStream
+     */
+    private String getAnimalOutput(String id) {
         // Create a stream to hold the output
         var newStream = new ByteArrayOutputStream();
         var newPrintStream = new PrintStream(newStream);
@@ -134,9 +159,14 @@ public class ZooIndexController {
         System.out.flush();
         System.setOut(old);
         String stringOutput = newStream.toString();
-        return stringOutput;
+        return formatLineBreaks( stringOutput);
     }
 
+    /**
+     * Returns a Map with key value pairs of our animals and their IDs
+     * 
+     * @return  The map of ID and animal key value pairs
+     */
     public static Map<Integer, String> getAllAnimalMap() {
         String[] animals = Animal.getAnimalList();
         int animalCount = animals.length;
@@ -146,5 +176,133 @@ public class ZooIndexController {
             animalMap.put((n + 1), animals[n]);
         }
         return animalMap;
+    }
+    
+    /**
+     * Returns the output of an employee's run() from the printStream as a String
+     * 
+     * @param empType   The type of employee we're creating
+     * @return          The String value of the employee's run() functions
+     */
+    private String getEmployeeDetails(String empType) {
+        // Create a stream to hold the output
+        var newStream = new ByteArrayOutputStream();
+        var newPrintStream = new PrintStream(newStream);
+
+        // IMPORTANT: Save the old System.out!
+        PrintStream old = System.out;
+        // Tell Java to use your special stream
+        System.setOut(newPrintStream);
+
+        switch( empType) {
+            case "curator" -> {
+                Curator cur = new Curator();
+                cur.run();
+            }
+            case "caretaker" -> {
+                Caretaker caret = new Caretaker();
+                caret.run();
+            }
+            default -> {
+                
+            }
+        }
+
+        // Put things back
+        System.out.flush();
+        System.setOut(old);
+        String stringOutput = newStream.toString();
+        return formatLineBreaks( stringOutput);
+    }
+    
+    /**
+     * Gets the employeeTitle String from an Employee subclass
+     * 
+     * @param type  The employee type's name
+     * @return      The employee's title as a String
+     */
+    private String getEmployeeName(String type) {
+        String myName = "";
+        switch (type) {
+            case "curator" -> {
+                Curator cur = new Curator();
+                myName = cur.getEmployeeTitle();
+            }
+            case "caretaker" -> {
+                Caretaker caret = new Caretaker();
+                myName = caret.getEmployeeTitle();
+            }
+            default -> {
+                
+            }
+        }
+        return myName;
+    }
+    
+    /**
+     * Gets the jobDescription String from an Employee subclass
+     * 
+     * @param type  The employee type's job description
+     * @return      The employee's job description as a String
+     */
+    private String getEmployeeDescription(String type) {
+        String description = "";
+        switch (type) {
+            case "curator" -> {
+                Curator cur = new Curator();
+                description = cur.getJobDescription();
+            }
+            case "caretaker" -> {
+                Caretaker caret = new Caretaker();
+                description = caret.getJobDescription();
+            }
+            default -> {
+                
+            }
+        }
+        return description;
+    }
+        
+    /**
+     * Gets the visitor's payment to enter the zoo from a Visitor subclass
+     * 
+     * @param vType     The vistitor type as a string
+     * @return          The visitor's entry fee converted from double to a string
+     */
+    public String getVisitorPayment( String vType) {
+        String payment = "";
+        switch (vType) {
+            case "visitor" -> {
+                Guest gus = new Guest();
+                payment = "" + gus.getGroupCost();
+            }
+            case "member" -> {
+                Member mem = new Member();
+                payment = "" + mem.getGroupCost();
+            }
+            case "lifetimemember" -> {
+                LifetimeMember lmem = new LifetimeMember();
+                payment = "" + lmem.getGroupCost();
+            }
+            case "contestwinner" -> {
+                ContestWinner cwin = new ContestWinner();
+                payment = "" + cwin.getGroupCost();
+            }
+            default -> {
+                
+            }
+        }
+        return payment;
+    }
+    
+    /**
+     * Formats a line of printed string output and replaces line breaks with <br>
+     * 
+     * @param output    The text output we wish to convert
+     * @return          The text with line breaks replaced as <br>
+     */
+    public String formatLineBreaks(String output) {
+        String formattedOutput = output.replace("\n", "<br>").replace("\r", "<br>");
+        return formattedOutput;
     }
 }

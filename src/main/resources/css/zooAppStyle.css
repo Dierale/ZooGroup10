@@ -1,7 +1,18 @@
+main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
 #contentMain {
     
 }
 
 #zooList { 
     
+}
+
+#zooList a {
+    margin-bottom: 10px;
 }
