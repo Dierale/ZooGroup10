@@ -1,39 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+    <head>        
         <meta charset="UTF-8">
         <title>Group 10 Zoo</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+        <link rel="stylesheet" th:href="@{/css/zooAppStyle.css}">
     </head>
     <body>
         <div class="px-4 py-4 my-5 text-center">
             <h1>Visit the Animals</h1>
-            <hr>
+            <hr class="hr-large hr-center">
             <br>
             <div class="row payment-box">
                 <div class="payment-inner">
-                    
+                    <p th:utext="${payment}" />
                 </div>
             </div>
-            <br>
+            <hr class="hr-large hr-center">
             <div class="row">
+                <h5>Select an animal to view it's exhibit</h5>
                 <main id="zooList">
                     <th:block th:each="entry: ${animalMap}">
-                        <a class="col-2" th:href="@{/visitor(id=${entry.key})}"> [[${entry.key}]]-[[${entry.value}]]</a> 
+                        <a class="col-2" th:href="@{/visitor(visitorType=${type},id=${entry.key})}"> [[${entry.key}]]-[[${entry.value}]]</a> 
                     </th:block>
                 </main>
             </div>
-            
-            <div class="row">
+            <br>
+            <div id="animalDescription-container" class="row">
                 <aside th:if = "${id} >= 1">
-                    <hr>
-                    <p th:text="${id} + ' ' + ${animalMap.get( __${id}__)}">
-                    <p th:utext="${animalOutput}" />
+                    <hr class="hr-large hr-center">
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-3">
+                            <div class="card">
+                                <img th:src="'/images/' + (${animalImage})" alt="Animal Image">
+                                <div class="container">
+                                  <h4><b th:text="${animalMap.get( __${id}__)}" /></h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-7 text-left">
+                            <h4><b th:text="'More about the ' + ${animalMap.get( __${id}__)}" /></h4>
+                            <hr class="hr-large hr-center">
+                            <p th:utext="${animalOutput}" />
+                        </div>
+                        <div class="col-sm-1"></div>
+                    </div>
                 </aside>
             </div>
             
-            <hr>
+            <br>
+            <hr class="hr-large hr-center">
             <p><a href="/">Return to Homepage</a></p> 
             <p><a href="https://github.com/Dierale/ZooGroup10">Visit Us on GitHub</a></p> 
         </div>

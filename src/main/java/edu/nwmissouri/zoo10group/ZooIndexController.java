@@ -105,6 +105,7 @@ public class ZooIndexController {
         model.addAttribute("payment", getVisitorPayment(visitorTypeParam));
         model.addAttribute("animalMap", getAllAnimalMap());
         model.addAttribute("animalOutput", getAnimalOutput(idParam));
+        model.addAttribute("animalImage", getAnimalImageLink(idParam));
         return "visitor";
     }
 
@@ -176,6 +177,18 @@ public class ZooIndexController {
             animalMap.put((n + 1), animals[n]);
         }
         return animalMap;
+    }
+    
+    private String getAnimalImageLink(String id) {
+        var intID = Integer.parseInt(id);
+        var myList = Animal.getAnimalList();
+        
+        String imageName = "";
+        if ((intID > 0) && (intID <= myList.length)) {
+            imageName = myList[intID - 1];
+        }
+        imageName = imageName.replace(" ", "_") + ".jpg";
+        return imageName;
     }
     
     /**
@@ -270,23 +283,23 @@ public class ZooIndexController {
      * @return          The visitor's entry fee converted from double to a string
      */
     public String getVisitorPayment( String vType) {
-        String payment = "";
+        String payment = "You have paid an entry fee of $";
         switch (vType) {
-            case "visitor" -> {
+            case "guest" -> {
                 Guest gus = new Guest();
-                payment = "" + gus.getGroupCost();
+                payment += gus.getGroupCost();
             }
             case "member" -> {
                 Member mem = new Member();
-                payment = "" + mem.getGroupCost();
+                payment += + mem.getGroupCost();
             }
             case "lifetimemember" -> {
                 LifetimeMember lmem = new LifetimeMember();
-                payment = "" + lmem.getGroupCost();
+                payment += + lmem.getGroupCost();
             }
             case "contestwinner" -> {
                 ContestWinner cwin = new ContestWinner();
-                payment = "" + cwin.getGroupCost();
+                payment += + cwin.getGroupCost();
             }
             default -> {
                 
