@@ -143,6 +143,9 @@ div#contentFooter #footerNavbar li.footer-item a {
     margin-bottom: 20px;
 }
 
+#visitorContent {
+    min-height: 400px;
+}
 
 #zooList {
     margin-bottom: 40px;
