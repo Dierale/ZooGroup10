@@ -21,32 +21,34 @@
                 <h5>Select an animal to view it's exhibit</h5>
                 <main id="zooList" class="row justify-content-center">
                     <th:block th:each="entry: ${animalMap}">
-                        <a class="col-sm-2" th:href="@{/visitor(visitorType=${type},id=${entry.key})}"> [[${entry.key}]]-[[${entry.value}]]</a> 
+                        <a class="col-sm-2" th:href="@{/visitor(visitorType=${type},id=${entry.key})}">[[${entry.value}]]</a> 
                     </th:block>
                 </main>
             </div>
             <br>
-            <div id="animalDescription-container" class="row">
-                <aside th:if = "${id} >= 1">
-                    <br>
-                    <div class="row">
-                        <div class="col-sm-1"></div>
-                        <div class="col-sm-3">
-                            <div class="card">
-                                <img th:src="'/images/' + (${animalImage})" alt="Animal Image">
-                                <div class="container">
-                                  <h4><b th:text="${animalMap.get( __${id}__)}" /></h4>
+            <div id="animalDescription-container">
+                <div class="row">
+                    <aside th:if = "${id} >= 1">
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-3">
+                                <div class="card">
+                                    <img th:src="'/images/' + (${animalImage})" alt="Animal Image">
+                                    <div class="container">
+                                      <h4><b th:text="${animalMap.get( __${id}__)}" /></h4>
+                                    </div>
                                 </div>
                             </div>
+                            <div class="col-sm-7 text-left">
+                                <h4><b th:text="'More about the ' + ${animalMap.get( __${id}__)}" /></h4>
+                                <hr class="hr-large hr-center">
+                                <p th:utext="${animalOutput}" />
+                            </div>
+                            <div class="col-sm-1"></div>
                         </div>
-                        <div class="col-sm-7 text-left">
-                            <h4><b th:text="'More about the ' + ${animalMap.get( __${id}__)}" /></h4>
-                            <hr class="hr-large hr-center">
-                            <p th:utext="${animalOutput}" />
-                        </div>
-                        <div class="col-sm-1"></div>
-                    </div>
-                </aside>
+                    </aside>
+                </div>
             </div>
             
             <br>
