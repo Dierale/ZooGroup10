@@ -2,7 +2,7 @@ package edu.nwmissouri.zoo10group;
 
 /**
  *
- * @author S503330
+ * @author Alex Dieringer
  */
 public abstract class Animal {
 
@@ -32,6 +32,8 @@ public abstract class Animal {
 
     /**
      * speak() - general method for animal utterance
+     * 
+     * @return Returns what the animal speaks as a String
      */
     public String speak() {
         return "Generic animal sound";
@@ -39,6 +41,8 @@ public abstract class Animal {
 
     /**
      * move() - general method for animal movement
+     * 
+     * @return  Returns the animal's movement described as a String
      */
     public String move() {
         return "Generic animal movement";
@@ -56,7 +60,7 @@ public abstract class Animal {
     /**
      * Get the animal gender.
      *
-     * @see edu.nwmissouri.zoo04lab.AnimalGender
+     * @see edu.nwmissouri.zoo10group.AnimalGender
      * @return the gender
      */
     public AnimalGender getGender() {
@@ -66,13 +70,18 @@ public abstract class Animal {
     /**
      * Set the animal gender using an enum
      *
-     * @see edu.nwmissouri.zoo04lab.AnimalGender
+     * @see edu.nwmissouri.zoo10group.AnimalGender
      * @param gender the gender to set
      */
     public void setGender(AnimalGender gender) {
         this.gender = gender;
     }
 
+    /**
+     * Returns a list of the animals within the project as Strings
+     * 
+     * @return  The array of animal name Strings
+     */
     public static String[] getAnimalList() {
         String[] animalList = {
             "Black Panther", "Brachiosaurus", "Elephant Bird", "Glyptodon", "Griffin"
@@ -80,6 +89,12 @@ public abstract class Animal {
         return animalList;
     }
 
+    /**
+     * Returns an animal from getAnimalList() by Index
+     * 
+     * @param index The index to pull from within the getAnimalList() array
+     * @return  Returns the name of animal as a String
+     */
     public String getAnimalFromList(int index) {
         String myList[] = getAnimalList();
         int length = myList.length;

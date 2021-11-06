@@ -65,7 +65,7 @@ public class Griffin extends Animal implements Runnable {
         System.out.println(speak());
         System.out.println(move());
 
-        System.out.println("\nMy species is called " + getSpeciesName());;
+        System.out.println("My species is called " + getSpeciesName());;
         System.out.println("Sometimes I'm referred to as the species: " + getLatinName());
         System.out.println("My preferred habit is: " + getLocationFound());
         System.out.println("When I get tired I like to sleep for " + getSleepDuration() + " hours");

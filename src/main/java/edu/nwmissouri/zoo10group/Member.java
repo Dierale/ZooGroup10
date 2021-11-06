@@ -2,7 +2,7 @@ package edu.nwmissouri.zoo10group;
 
 /**
  *
- * @author S503330
+ * @author Alex Dieringer
  */
 public class Member extends Visitor {
 
