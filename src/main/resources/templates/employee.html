@@ -15,17 +15,20 @@
             <div class="row">
                 <div class="col-sm-1"></div>
                 <div id="empSidebar" class="col-sm-3">
-                    <div class="sidebar">
-                        <ul class="navbar-nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/employee?employeeType=caretaker">Caretaker</a>
+                    <div class="flex-column flex-shrink-0 justify-content-center">
+                        <ul class="nav nav-pills flex-column bg-light">
+                            <li th:switch="${type}" class="nav-item" >
+                                <a th:case="'caretaker'" class="nav-link active" href="/employee?employeeType=caretaker">Caretaker</a>
+                                <a th:case="*" class="nav-link" href="/employee?employeeType=caretaker">Caretaker</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/employee?employeeType=curator">Curator</a>
+                            <li th:switch="${type}" class="nav-item">
+                                <a th:case="'curator'" class="nav-link active" href="/employee?employeeType=curator">Curator</a>
+                                <a th:case="*" class="nav-link" href="/employee?employeeType=curator">Curator</a>
                             </li>
                         </ul>
                     </div>
                 </div>
+                
                 <div id="empContent" class="col-sm-4">
                     <h4 th:text="${employeeName}" />
                     <hr>

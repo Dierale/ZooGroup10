@@ -35,15 +35,32 @@ main {
     margin-left: auto;
     margin-right: auto;
 }
+
 #empContent hr {
     text-align: center;
     margin: 15px auto;
     width: 200px;
 }
 
-#sidebar ul {
-    list-style: none;
+#empSidebar ul {
+    max-width: 220px;
+    border: 1px solid #E9E9E9;
+    border-radius: 10px;
 }
+
+#empSidebar ul li a {
+    color: black;
+}
+
+#empSidebar ul li a:hover {
+    background-color: #E9E9E9;
+}
+
+#empSidebar ul li a.active {
+    color: white;
+    background-color: #999;
+}
+
 #animalDescription-container {
     width: 94%;
     margin-left: auto;
