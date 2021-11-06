@@ -208,6 +208,12 @@ public class ZooIndexController {
         return animalMap;
     }
     
+    /**
+     * Returns a String for the name of an animal's Image
+     * 
+     * @param id    The ID of the index for the animal
+     * @return      Return the file name of the animal's image
+     */
     private String getAnimalImageLink(String id) {
         var intID = Integer.parseInt(id);
         var myList = Animal.getAnimalList();
@@ -312,7 +318,7 @@ public class ZooIndexController {
      * @return          The visitor's entry fee converted from double to a string
      */
     public String getVisitorPayment( String vType) {
-        String payment = "You have paid an entry fee of $";
+        String payment = "(You have paid an entry fee of $";
         switch (vType) {
             case "guest" -> {
                 Guest gus = new Guest();
@@ -334,6 +340,7 @@ public class ZooIndexController {
                 
             }
         }
+        payment += ")";
         return payment;
     }
     

@@ -1,3 +1,8 @@
+body {
+    overflow-x: hidden;
+    background-color: #777;
+}
+
 main {
     display: flex;
     flex-direction: row;
@@ -6,7 +11,7 @@ main {
 }
 
 #contentMain {
-    
+    padding-bottom: 3rem!important;
 }
 
 #contentMain div.selection-box {
@@ -34,6 +39,67 @@ main {
     max-width: 400px;
     margin-left: auto;
     margin-right: auto;
+}
+
+div#contentHeader {
+    padding-top: 2rem!important;
+    padding-bottom: 2rem!important;
+    background-color: #777;
+    color: #FFF;
+}
+
+div#contentFooter {
+    padding-top: 1rem!important;
+    padding-bottom: 1.5rem!important;
+    margin-left: 0;
+    margin-right: 0;
+    background-color: #777;
+    color: #FFF;
+}
+
+body div.zooApp-main {
+    background-color: #FFF;
+    padding-top: 1rem!important;
+    padding-bottom: 1rem!important;
+}
+
+body div.zooApp-extend {
+    background-color: #FFF;
+    padding-top: 1rem!important;
+    padding-bottom: 6rem!important;
+}
+
+div#contentFooter h5,
+div#contentFooter .homepage-return {
+    margin-top: 0.5rem!important;
+    margin-bottom: 1rem!important;
+}
+
+div#contentFooter h5 {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+div#contentHeader hr, div#contentFooter hr {
+    color: #FFF;
+    background: #FFF;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div#contentHeader a, div#contentFooter a {
+    color: #FFF;
+}
+
+div#contentFooter #footerNavbar {
+    max-width: 100%;
+}
+
+div#contentFooter #footerNavbar li.footer-item a {
+    margin-left: 5px;
+    margin-right: 5px;
+    height: 40px!important;
 }
 
 #empContent hr {
@@ -65,7 +131,7 @@ main {
     width: 94%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 15px;
+    margin-top: 50px;
 }
 
 #animalDescription-container .card {
@@ -79,7 +145,7 @@ main {
 
 
 #zooList {
-    margin-top: 20px;
+    margin-bottom: 40px;
 }
 
 body hr {
