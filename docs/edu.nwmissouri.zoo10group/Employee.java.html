@@ -18,7 +18,7 @@
      * @return  The value of employeePaymentType as type PaymentType
      */
     public PaymentType getPaymentType() {
-<span class="nc" id="L21">        return this.employeePaymentType;</span>
+<span class="fc" id="L21">        return this.employeePaymentType;</span>
     }
     
     /**
@@ -29,9 +29,9 @@
      */
     public String getPaymentTypeString() {
 <span class="fc" id="L31">        PaymentType tp = this.employeePaymentType;</span>
-<span class="pc bpc" id="L32" title="4 of 6 branches missed.">        if( null != tp) switch (tp) {</span>
+<span class="pc bpc" id="L32" title="3 of 6 branches missed.">        if( null != tp) switch (tp) {</span>
             case HOURLY:
-<span class="nc" id="L34">                return &quot;Hourly&quot;;</span>
+<span class="fc" id="L34">                return &quot;Hourly&quot;;</span>
             case SALARY:
 <span class="fc" id="L36">                return &quot;Salary&quot;;</span>
             case CONTRACT:
@@ -67,10 +67,10 @@
      * @return  The employee's monthly pay as a double
      */
     public double calculateMonthlyPay() {
-<span class="nc bnc" id="L70" title="All 2 branches missed.">        if(this.employeePaymentType == PaymentType.SALARY) {</span>
+<span class="pc bpc" id="L70" title="1 of 2 branches missed.">        if(this.employeePaymentType == PaymentType.SALARY) {</span>
 <span class="nc" id="L71">            return (this.paymentRate/12);</span>
-<span class="nc bnc" id="L72" title="All 2 branches missed.">        } else if (this.employeePaymentType == PaymentType.HOURLY) {</span>
-<span class="nc" id="L73">            return (this.paymentRate * this.hoursWorked * 4);</span>
+<span class="pc bpc" id="L72" title="1 of 2 branches missed.">        } else if (this.employeePaymentType == PaymentType.HOURLY) {</span>
+<span class="fc" id="L73">            return (this.paymentRate * this.hoursWorked * 4);</span>
         } else {
 <span class="nc" id="L75">            return 0;</span>
         }
@@ -83,7 +83,7 @@
      * @return  The employee's monthly pay as a double
      */
     public double calculateYearlyPay() {
-<span class="nc" id="L86">        return (calculateMonthlyPay() * 12);</span>
+<span class="fc" id="L86">        return (calculateMonthlyPay() * 12);</span>
     }
     
     /**
@@ -92,7 +92,7 @@
      * @return  The title of the employee as a String
      */
     public String getEmployeeTitle() {
-<span class="nc" id="L95">        return this.employeeTitle;</span>
+<span class="fc" id="L95">        return this.employeeTitle;</span>
     }
     
     /**
@@ -101,7 +101,7 @@
      * @return  The job description of the employee as a String
      */
     public String getJobDescription() {
-<span class="nc" id="L104">        return this.jobDescription;</span>
+<span class="fc" id="L104">        return this.jobDescription;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

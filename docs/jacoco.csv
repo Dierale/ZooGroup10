@@ -9,10 +9,10 @@ ZooGroup10,edu.nwmissouri.zoo10group,ZooApp,5,3,0,0,2,1,1,1,1,1
 ZooGroup10,edu.nwmissouri.zoo10group,Animal,37,40,6,0,12,8,8,3,5,3
 ZooGroup10,edu.nwmissouri.zoo10group,AnimalGender,0,27,0,0,0,5,0,1,0,1
 ZooGroup10,edu.nwmissouri.zoo10group,Glyptodon,95,0,2,0,28,0,10,0,9,0
-ZooGroup10,edu.nwmissouri.zoo10group,Employee,43,22,8,2,12,6,11,4,5,4
+ZooGroup10,edu.nwmissouri.zoo10group,Employee,11,54,5,5,4,14,5,10,0,9
 ZooGroup10,edu.nwmissouri.zoo10group,Person,0,3,0,0,0,1,0,1,0,1
 ZooGroup10,edu.nwmissouri.zoo10group,Curator,24,69,0,2,8,23,2,5,2,4
-ZooGroup10,edu.nwmissouri.zoo10group,LifetimeMember,43,0,0,0,18,0,9,0,9,0
+ZooGroup10,edu.nwmissouri.zoo10group,LifetimeMember,0,43,0,0,0,18,0,9,0,9
 ZooGroup10,edu.nwmissouri.zoo10group,Member,0,25,0,0,0,9,0,3,0,3
 ZooGroup10,edu.nwmissouri.zoo10group,Guest,12,0,0,0,5,0,1,0,1,0
 ZooGroup10,edu.nwmissouri.zoo10group,BlackPanther,95,0,2,0,28,0,10,0,9,0
