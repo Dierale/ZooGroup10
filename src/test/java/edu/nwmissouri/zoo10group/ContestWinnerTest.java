@@ -152,7 +152,7 @@ public class ContestWinnerTest {
     public void testGetGroupSize() {
         System.out.println("getGroupSize");
         ContestWinner instance = new ContestWinner();
-        int expResult = 0;
+        int expResult = 1;
         int result = instance.getGroupSize();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
@@ -165,7 +165,7 @@ public class ContestWinnerTest {
     @Test
     public void testSetGroupSize() {
         System.out.println("setGroupSize");
-        int groupSize = 0;
+        int groupSize = 1;
         ContestWinner instance = new ContestWinner();
         instance.setGroupSize(groupSize);
         // TODO review the generated test code and remove the default call to fail.
