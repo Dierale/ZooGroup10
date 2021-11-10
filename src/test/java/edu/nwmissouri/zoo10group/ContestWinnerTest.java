@@ -48,7 +48,6 @@ public class ContestWinnerTest {
         String result = instance.getContestName();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -61,7 +60,6 @@ public class ContestWinnerTest {
         ContestWinner instance = new ContestWinner();
         instance.setContestName(ContestName);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -75,7 +73,6 @@ public class ContestWinnerTest {
         Date result = instance.getDateOfContest();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -88,7 +85,6 @@ public class ContestWinnerTest {
         ContestWinner instance = new ContestWinner();
         instance.setDateOfContest(DateOfContest);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -102,7 +98,6 @@ public class ContestWinnerTest {
         double result = instance.getEntranceFee();
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -115,7 +110,6 @@ public class ContestWinnerTest {
         ContestWinner instance = new ContestWinner();
         instance.setEntranceFee(entranceFee);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -129,7 +123,6 @@ public class ContestWinnerTest {
         double result = instance.getDiscount();
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -142,7 +135,6 @@ public class ContestWinnerTest {
         ContestWinner instance = new ContestWinner();
         instance.setDiscount(discount);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -156,7 +148,6 @@ public class ContestWinnerTest {
         int result = instance.getGroupSize();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -169,7 +160,6 @@ public class ContestWinnerTest {
         ContestWinner instance = new ContestWinner();
         instance.setGroupSize(groupSize);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }
