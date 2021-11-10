@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Brachiosaurus.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ZooGroup10</a> &gt; <a href="index.source.html" class="el_package">edu.nwmissouri.zoo10group</a> &gt; <span class="el_source">Brachiosaurus.java</span></div><h1>Brachiosaurus.java</h1><pre class="source lang-java linenums">package edu.nwmissouri.zoo10group;
+
+/**
+ * Brachiosaurus class creation and extends with Animal class
+ * 
+ * @author Jayanth Naramsetty
+ */
+public class Brachiosaurus extends Animal implements Runnable {
+/**
+ * It initialize the location of the animal
+ */
+    
+   private final String CurrentLocation;  
+    /**
+     * Brachiosaurus declaration
+     * 
+     * The CurrentLocation of the animal
+     *
+     * @param name
+     */
+   
+     public Brachiosaurus(String name) {
+<span class="nc" id="L23">        super(name);</span>
+<span class="nc" id="L24">       this.CurrentLocation= &quot;extinct&quot;;</span>
+        
+<span class="nc" id="L26">    }</span>
+
+    /**
+     * Returns a string with what the animal says
+     * @return  The animal's speech as a string
+     */
+    public String speak() {
+<span class="nc" id="L33">        return &quot;I can Roar,Grunts,Hisses,Squeaks&quot;;</span>
+    }
+
+    /**
+     * Returns a String with the moment of the animal
+     * @return The animal moment as a string
+     */
+    public String move() {
+<span class="nc" id="L41">        return &quot;i walk all around the land &quot;;</span>
+        
+    }
+
+    /**
+     * Returns a String of the facts which contains info about the animal
+     * @return The animal facts a String
+     */
+    public String facts() {
+<span class="nc" id="L50">        return &quot;WE are group of reptiles that have lived on Earth&quot;</span>
+                + &quot;for about 245 million years.&quot;;
+        
+    }
+
+    public String getCurrentLocation() {
+<span class="nc" id="L56">        return this.CurrentLocation;</span>
+    }
+    
+    @Override
+    public void run() {
+<span class="nc" id="L61">        System.out.println(&quot;Hai Humans my name is &quot;+ getName());</span>
+<span class="nc" id="L62">        System.out.println(speak());</span>
+<span class="nc" id="L63">        System.out.println(move());</span>
+<span class="nc" id="L64">        System.out.println(facts());</span>
+<span class="nc" id="L65">        System.out.println(&quot;The Currentlocation of the Brachiosaurus is: &quot; + getCurrentLocation());</span>
+
+<span class="nc" id="L67">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

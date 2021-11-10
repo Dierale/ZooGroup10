@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BlackPanther.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ZooGroup10</a> &gt; <a href="index.source.html" class="el_package">edu.nwmissouri.zoo10group</a> &gt; <span class="el_source">BlackPanther.java</span></div><h1>BlackPanther.java</h1><pre class="source lang-java linenums">package edu.nwmissouri.zoo10group;
+
+/**
+ *
+ * @author Hemanth Sai Reddy Velamuri
+ */
+public class BlackPanther extends Animal implements Runnable {
+
+    /**
+     * String declaration.
+     *
+     * @param name
+     */
+    
+    private final String Group_Name;
+    private final String Eye_Color;
+    private final String Nativity;
+    private final int AvgSpeed;
+    private final boolean IsCarnivores;
+    
+    /**
+     *
+     * @param name
+     */
+    public BlackPanther(String name) {
+<span class="nc" id="L26">        super(name);</span>
+        
+<span class="nc" id="L28">        this.Group_Name = &quot;Cat&quot;;</span>
+<span class="nc" id="L29">        this.Eye_Color = &quot;Green&quot;;</span>
+<span class="nc" id="L30">        this.Nativity = &quot;Asia&quot;;</span>
+<span class="nc" id="L31">        this.AvgSpeed = 56;</span>
+<span class="nc" id="L32">        this.IsCarnivores = true;</span>
+        
+              
+<span class="nc" id="L35">    }</span>
+    
+    /******************************
+     * SUPERCLASS FUNCTION OVERRIDES
+     *******/
+
+    /**
+     * BlackPanther Speak
+     *
+     * @return 
+     */
+    @Override
+    public String speak() {
+<span class="nc" id="L48">        String roar = &quot;I am a BlackPanther I roar very loud, but I am&quot; + &quot;more aggressive!!&quot;;</span>
+<span class="nc" id="L49">        return roar;</span>
+    }
+
+    /**
+     *
+     * BlackPanther move
+     * @return 
+     */
+    @Override
+    public String move() {
+<span class="nc" id="L59">        String chase = &quot;I can run faster on land&quot; + &quot;I can chase faster on trees!&quot;;</span>
+<span class="nc" id="L60">        return chase;</span>
+    }
+
+    /**
+     *
+     */
+    @Override
+    public void run() {
+<span class="nc" id="L68">        System.out.println(&quot;Hello, my name is : &quot; + getName() + &quot;!&quot;);</span>
+
+<span class="nc" id="L70">        System.out.println(speak());</span>
+<span class="nc" id="L71">        System.out.println(move());</span>
+
+<span class="nc" id="L73">        System.out.println(&quot;\nMy group is called &quot; + getGroup_Name());;</span>
+<span class="nc" id="L74">        System.out.println(&quot;Color of my Eye is: &quot; + getEye_Color());</span>
+<span class="nc" id="L75">        System.out.println(&quot;My nativity belongs to: &quot; + getNativity());</span>
+<span class="nc" id="L76">        System.out.println(&quot;The average speed I can run &quot; + getAvgSpeed());</span>
+<span class="nc bnc" id="L77" title="All 2 branches missed.">        String isCarnovorus = (isIsCarnivores()) ? &quot;yes&quot; : &quot;no&quot;;</span>
+       
+
+<span class="nc" id="L80">        System.out.println(&quot;Can you find me out in the wild? The answer is &quot;</span>
+                + isCarnovorus);
+<span class="nc" id="L82">        System.out.println(speak());</span>
+<span class="nc" id="L83">        System.out.println(move());</span>
+   
+<span class="nc" id="L85">    }</span>
+
+    /**
+     * getGroupName() - Returns the animal's group name
+     *
+     * @return The name of the animal's group as a String
+     */
+    public String getGroup_Name() {
+<span class="nc" id="L93">        return Group_Name;</span>
+    }
+
+    /**
+     * getEyecolor() - Returns the eye color of my animal
+     *
+     * @return The color of the animal's eye
+     */
+    public String getEye_Color() {
+<span class="nc" id="L102">        return Eye_Color;</span>
+    }
+
+    /**
+     * getNativity() - Returns the animal's nativity
+     *
+     * @return The nativity of the animal as a String
+     */
+    public String getNativity() {
+<span class="nc" id="L111">        return Nativity;</span>
+    }
+
+    /**
+     * getAvegSpeed() -Returns the animal's average speed
+     *
+     * @return The average speed of the animal as a int
+     */
+    public int getAvgSpeed() {
+<span class="nc" id="L120">        return AvgSpeed;</span>
+    }
+
+    /**
+      * getIsCarnivores() - Returns whether the animal is carnivores or not
+     *
+     * @return Returns true or false on whether the animal is carnivores
+     */
+    public boolean isIsCarnivores() {
+<span class="nc" id="L129">        return IsCarnivores;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

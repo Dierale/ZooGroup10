@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Curator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ZooGroup10</a> &gt; <a href="index.source.html" class="el_package">edu.nwmissouri.zoo10group</a> &gt; <span class="el_source">Curator.java</span></div><h1>Curator.java</h1><pre class="source lang-java linenums">package edu.nwmissouri.zoo10group;
+
+import java.util.Random;
+
+/**
+ * The Curator class that extends a Person of type Employee
+ * 
+ * @author Alex Dieringer
+ */
+public class Curator extends Employee implements Runnable {
+    
+    private String[] myExhibits;
+    
+    /**
+     * Class constructor for Curator()
+     * Randomly generates animals for myExhibits
+     */
+<span class="fc" id="L18">    public Curator() {</span>
+<span class="fc" id="L19">        Random rand = new Random();</span>
+<span class="fc" id="L20">        String myList[] = Animal.getAnimalList();</span>
+<span class="fc" id="L21">        int max = myList.length;</span>
+<span class="fc" id="L22">        int choice = rand.nextInt(max);</span>
+<span class="fc" id="L23">        int choice2 = choice;</span>
+        
+<span class="fc bfc" id="L25" title="All 2 branches covered.">        while( choice == choice2) {</span>
+<span class="fc" id="L26">            choice2 = rand.nextInt(max);</span>
+        }
+<span class="fc" id="L28">        String[] exhibits = new String[2];</span>
+<span class="fc" id="L29">        exhibits[0] = myList[choice];</span>
+<span class="fc" id="L30">        exhibits[1] = myList[choice2];</span>
+        
+<span class="fc" id="L32">        setDefaultVariables();</span>
+<span class="fc" id="L33">        this.myExhibits = exhibits;</span>
+<span class="fc" id="L34">    }</span>
+    
+    /**
+     * Class constructor for Curator()
+     * Accepts a String array instead of randomizing myExhibits
+     * 
+     * @param exhibit   The array of strings to set myExhibits to
+     */
+<span class="nc" id="L42">    public Curator(String[] exhibit) {</span>
+<span class="nc" id="L43">        setDefaultVariables();</span>
+<span class="nc" id="L44">        this.myExhibits = exhibit;</span>
+<span class="nc" id="L45">    }</span>
+    
+    /**
+     * The setter function for private String array myExhibits
+     * 
+     * @param exhibits  The array of Strings to set myExhibits to
+     */
+    public void setExhibits( String[] exhibits) {
+<span class="fc" id="L53">        this.myExhibits = exhibits;</span>
+<span class="fc" id="L54">    }</span>
+    
+    /**
+     * The getter function for private String array myExhibits
+     * 
+     * @return  The array of Strings that contain the Curator's exhibits
+     */
+    public String[] getExhibits() {
+<span class="fc" id="L62">        return this.myExhibits;</span>
+    }
+    
+    /**
+     * Used by constructor classes to standardize default variable values
+     * Assigns values to superclass protected variables as follows
+     *  - employeePaymentType, paymentRate, hoursWorked, employeeTitle, employeeDescription
+     */
+    private void setDefaultVariables() {
+<span class="fc" id="L71">        this.employeePaymentType = PaymentType.HOURLY;</span>
+<span class="fc" id="L72">        this.paymentRate = 25;</span>
+<span class="fc" id="L73">        this.hoursWorked = 40;</span>
+<span class="fc" id="L74">        this.employeeTitle = &quot;Curator&quot;;</span>
+<span class="fc" id="L75">        this.jobDescription = &quot;A curator keeps our visitors happy by being friendly and curteous. &quot;</span>
+                + &quot;They are tasked with providing visitors with information on each animal's exhibit.&quot;;
+<span class="fc" id="L77">    }</span>
+    
+    /**
+     * Implements the run() function from Runnable
+     * Prints out statements about the Curator's hours per week, payment type, and payment rate
+     */
+    @Override
+    public void run() {
+<span class="nc" id="L85">        System.out.println(&quot;A Curator works for &quot; + getHoursPerWeek() + &quot; hours per week.&quot;);</span>
+<span class="nc" id="L86">        System.out.println(&quot;They are paid as a: &quot; + getPaymentTypeString() + &quot; employee&quot;);</span>
+<span class="nc" id="L87">        System.out.println(&quot;This means they are paid &quot; + getPaymentRate() + &quot; dollars per hour&quot;);</span>
+<span class="nc" id="L88">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

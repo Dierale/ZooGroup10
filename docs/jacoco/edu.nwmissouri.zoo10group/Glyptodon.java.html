@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Glyptodon.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ZooGroup10</a> &gt; <a href="index.source.html" class="el_package">edu.nwmissouri.zoo10group</a> &gt; <span class="el_source">Glyptodon.java</span></div><h1>Glyptodon.java</h1><pre class="source lang-java linenums">package edu.nwmissouri.zoo10group;
+
+/**
+ * Glyptodon Class derived from animal class
+ *
+ * @author Manish Goud Bandharapu
+ */
+public class Glyptodon extends Animal implements Runnable {
+    
+    private final String name;
+    private final String genus;
+    private final String foundin;
+    private final int travelled_feet;
+    private final boolean isPerceive;
+    
+    /**
+     * Animal addition
+     *
+     * @param name
+     */
+    public Glyptodon(String name) {
+<span class="nc" id="L22">        super(name);</span>
+        
+<span class="nc" id="L24">        this.name = &quot;Glyptodon&quot;;</span>
+<span class="nc" id="L25">        this.genus = &quot;armadillos&quot;;</span>
+<span class="nc" id="L26">        this.foundin = &quot;Forest&quot;;</span>
+<span class="nc" id="L27">        this.travelled_feet = 20;</span>
+<span class="nc" id="L28">        this.isPerceive = true;</span>
+<span class="nc" id="L29">    }</span>
+
+    /**
+     * Animal speak
+     * @return 
+     */
+    @Override
+    public String speak() {
+<span class="nc" id="L37">        String spoken = &quot;I'm an Glyptodon! and I roar liek a lion&quot;;</span>
+<span class="nc" id="L38">        return spoken;</span>
+       
+    }
+
+    /**
+     * Animal move
+     * @return 
+     */
+    @Override()
+    public String move() {
+<span class="nc" id="L48">        String movement = &quot;I walk slowly on land surfaces but I enjoy moving through water.&quot;;</span>
+<span class="nc" id="L49">        return movement;</span>
+    }
+
+    /**
+     *
+     */
+    @Override
+    public void run() {
+<span class="nc" id="L57">        System.out.println(&quot;Hello, my name is : &quot; + getMyName() + &quot;!&quot;);</span>
+
+<span class="nc" id="L59">        System.out.println(speak());</span>
+<span class="nc" id="L60">        System.out.println(move());</span>
+
+<span class="nc" id="L62">        System.out.println(&quot;\nMy name is called &quot; + getMyName());</span>
+<span class="nc" id="L63">        System.out.println(&quot;Sometimes I'm referred to as the genus: &quot; + getGenus());</span>
+<span class="nc" id="L64">        System.out.println(&quot;I can see found in: &quot; + getFoundin());</span>
+<span class="nc" id="L65">        System.out.println(&quot;When I move I walk  &quot; + getTravelled() + &quot; feet&quot;);</span>
+<span class="nc bnc" id="L66" title="All 2 branches missed.">        String isSeen = (getPercieve()) ? &quot;yes&quot; : &quot;no&quot;;</span>
+<span class="nc" id="L67">        System.out.println(&quot;Can you find me forest? The answer is &quot;</span>
+                + isSeen);
+<span class="nc" id="L69">        System.out.println(speak());</span>
+<span class="nc" id="L70">        System.out.println(move());</span>
+
+<span class="nc" id="L72">    }</span>
+
+    /**
+     * getMyName() - Returns the name of the animal
+     * 
+     * @return
+     */
+    public String getMyName() {
+<span class="nc" id="L80">        return this.name;</span>
+    }
+    
+    /**
+     * getGenus() - Returns the genus of the animal
+     * 
+     * @return
+     */
+    public String getGenus() {
+<span class="nc" id="L89">        return this.genus;</span>
+    }
+
+    /**
+     * getGenus() - Returns the place where the animal is found
+     * 
+     * @return
+     */
+    public String getFoundin() {
+<span class="nc" id="L98">        return this.foundin;</span>
+    }
+
+    /**
+     *getTravelled() - Returns the area teh animal has travelled
+     * 
+     * @return
+     */
+    public int getTravelled() {
+<span class="nc" id="L107">        return this.travelled_feet;</span>
+    }
+
+    /**
+     *
+     * @return
+     */
+    public boolean getPercieve() {
+<span class="nc" id="L115">        return this.isPerceive;</span>
+    }
+   
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

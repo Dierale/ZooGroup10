@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ElephantBird.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ZooGroup10</a> &gt; <a href="index.source.html" class="el_package">edu.nwmissouri.zoo10group</a> &gt; <span class="el_source">ElephantBird.java</span></div><h1>ElephantBird.java</h1><pre class="source lang-java linenums">package edu.nwmissouri.zoo10group;
+
+/**
+ * Elephant Bird class derived from animal class
+ *
+ * @author Hemanth Kumar Reddy Pidaparathy
+ */
+public class ElephantBird extends Animal implements Runnable {
+
+    /**
+     * ElephantBird name
+     *
+     * @param name
+     */
+    
+    private final String animalName;
+    private final String family;
+    private final int lifeSpan;
+    private final int existedBefore;
+    private final boolean canFly;
+    
+    /**
+     *
+     * @param name
+     */
+    public ElephantBird(String name) {
+<span class="nc" id="L27">        super(name);</span>
+        
+<span class="nc" id="L29">        this.animalName = &quot;Elephant Bird&quot;;</span>
+<span class="nc" id="L30">        this.family = &quot;Aepyornithidae&quot;;</span>
+<span class="nc" id="L31">        this.lifeSpan = 60;</span>
+<span class="nc" id="L32">        this.existedBefore = 1000;</span>
+<span class="nc" id="L33">        this.canFly = false;</span>
+<span class="nc" id="L34">    }</span>
+
+    /**
+     * Elephant Bird speaks and describes about it.
+     * @return 
+     */
+    @Override
+    public String speak() {
+<span class="nc" id="L42">        String voice = &quot;I'm ElephantBird! I'm a bird which cannot fly.&quot;;</span>
+<span class="nc" id="L43">        return voice;</span>
+    }
+
+    /**
+     * Elephant Bird move and describes about its movements
+     * @return 
+     */
+    @Override
+    public String move() {
+<span class="nc" id="L52">        String moves = &quot;I'm a flightless bird but I can run with 68miles per hour.&quot;;</span>
+<span class="nc" id="L53">        return moves;</span>
+    }
+    /**
+     * Elephant bird and few of its features 
+     *  
+     */
+    @Override
+    public void run() {
+<span class="nc" id="L61">        System.out.println(&quot;Welcome to everyone, my name is : &quot; + getName() + &quot;!&quot;);</span>
+        
+<span class="nc" id="L63">        System.out.println(speak());</span>
+<span class="nc" id="L64">        System.out.println(move());</span>
+<span class="nc" id="L65">        System.out.println(&quot;\n&quot;);</span>
+        
+<span class="nc" id="L67">        System.out.println(&quot;I'm from species &quot; + getFamily() +&quot;.&quot;);</span>
+<span class="nc" id="L68">        System.out.println(&quot;My average life span is &quot; + getLifeSpan() +&quot;.&quot;);</span>
+<span class="nc" id="L69">        System.out.println(&quot;I existed before &quot; + getExistedBefore() +&quot;AD.&quot;);</span>
+<span class="nc" id="L70">        System.out.println(&quot;Can I fly or not? &quot; + isCanFly() +&quot;.&quot;);</span>
+        
+<span class="nc" id="L72">    }</span>
+    
+    /**
+     * Gets animal name
+     * @return
+     */
+    public String getAnimalName() {
+<span class="nc" id="L79">        return animalName;</span>
+    }
+    /**
+     * Gets animal related family
+     * @return
+     */
+    public String getFamily() {
+<span class="nc" id="L86">        return family;</span>
+    }
+
+    /**
+     * gets animal average lifespan
+     * @return
+     */
+    public int getLifeSpan() {
+<span class="nc" id="L94">        return lifeSpan;</span>
+    }
+
+    /**
+     * gets animal existed before certain years
+     * @return
+     */
+    public int getExistedBefore() {
+<span class="nc" id="L102">        return existedBefore;</span>
+    }
+
+    /**
+     * gets whether animal can fly or not
+     * @return
+     */
+    public boolean isCanFly() {
+<span class="nc" id="L110">        return canFly;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

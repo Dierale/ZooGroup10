@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Griffin.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ZooGroup10</a> &gt; <a href="index.source.html" class="el_package">edu.nwmissouri.zoo10group</a> &gt; <span class="el_source">Griffin.java</span></div><h1>Griffin.java</h1><pre class="source lang-java linenums">package edu.nwmissouri.zoo10group;
+
+/**
+ *
+ * @author Alex Dieringer
+ */
+public class Griffin extends Animal implements Runnable {
+
+    /**
+     * Define variables to hold data about the Griffin class May refactor
+     * variables into super class To be used in additional methods added later
+     */
+    private final String species_name;
+    private final String species_latin;
+    private final String locationFound;
+    private final int sleepDuration_hours;
+    private final int movementSpeed_mph;
+    private final boolean isExtinct;
+
+    /**
+     * Griffin constructor Creates an instance of the Griffin class, requires a
+     * name
+     *
+     * @param name The name we will be giving our new Griffin
+     */
+    public Griffin(String name) {
+<span class="fc" id="L27">        super(name);</span>
+
+<span class="fc" id="L29">        this.species_name = &quot;Griffin&quot;;</span>
+<span class="fc" id="L30">        this.species_latin = &quot;grȳpus&quot;;</span>
+<span class="fc" id="L31">        this.locationFound = &quot;Fantasy&quot;;</span>
+<span class="fc" id="L32">        this.sleepDuration_hours = 8;</span>
+<span class="fc" id="L33">        this.movementSpeed_mph = 80;</span>
+<span class="fc" id="L34">        this.isExtinct = true;</span>
+<span class="fc" id="L35">    }</span>
+
+    /******************************
+     * SUPERCLASS FUNCTION OVERRIDES
+     *******/
+    
+    
+    /**
+     * speak() - Presents the types of sounds made by the Griffin
+     */
+    @Override
+    public String speak() {
+<span class="fc" id="L47">        String spoken = &quot;I'm a Griffin and I chirp like a bird, but I can &quot;</span>
+                + &quot;trumpet loudly if angry.&quot;;
+<span class="fc" id="L49">        return spoken;</span>
+    }
+
+    /**
+     * move() - Describes the general type of movement the animal Griffin
+     */
+    @Override
+    public String move() {
+<span class="fc" id="L57">        String movement = &quot;I can walk but I really enjoy flying through the sky.&quot;;</span>
+<span class="fc" id="L58">        return movement;</span>
+    }
+
+    @Override
+    public void run() {
+<span class="nc" id="L63">        System.out.println(&quot;Hello, my name is : &quot; + getName() + &quot;!&quot;);</span>
+
+<span class="nc" id="L65">        System.out.println(speak());</span>
+<span class="nc" id="L66">        System.out.println(move());</span>
+
+<span class="nc" id="L68">        System.out.println(&quot;My species is called &quot; + getSpeciesName());;</span>
+<span class="nc" id="L69">        System.out.println(&quot;Sometimes I'm referred to as the species: &quot; + getLatinName());</span>
+<span class="nc" id="L70">        System.out.println(&quot;My preferred habit is: &quot; + getLocationFound());</span>
+<span class="nc" id="L71">        System.out.println(&quot;When I get tired I like to sleep for &quot; + getSleepDuration() + &quot; hours&quot;);</span>
+<span class="nc" id="L72">        System.out.println(&quot;When I'm really speeding along I max out at &quot;</span>
+<span class="nc" id="L73">                + getMovementSpeed() + &quot; mph&quot;);</span>
+
+<span class="nc bnc" id="L75" title="All 2 branches missed.">        String isFound = (getIsExtinct()) ? &quot;yes&quot; : &quot;no&quot;;</span>
+<span class="nc" id="L76">        System.out.println(&quot;Can you find me out in the wild? The answer is &quot;</span>
+                + isFound);
+<span class="nc" id="L78">    }</span>
+    
+    /******************************
+     * GRIFFIN UNIQUE FUNCTIONS
+     *******/
+    
+    /**
+     * getMyName() - Returns the animal's name
+     *
+     * @return The name of the animal as a String
+     */
+    public String getMyName() {
+<span class="nc" id="L90">        return this.name;</span>
+    }
+
+    /**
+     * getSpeciesName() - Returns the animal's species
+     *
+     * @return The animal's species as a String
+     */
+    public String getSpeciesName() {
+<span class="fc" id="L99">        return this.species_name;</span>
+    }
+
+    /**
+     * getLatinName() - Returns the animal's Latin name
+     *
+     * @return The animal's Latin name as a String
+     */
+    public String getLatinName() {
+<span class="fc" id="L108">        return this.species_latin;</span>
+    }
+
+    /**
+     * getLocationFound() - Return the location the animal is found
+     *
+     * @return The location of the animal as a String
+     */
+    public String getLocationFound() {
+<span class="fc" id="L117">        return this.locationFound;</span>
+    }
+
+    /**
+     * getSleepDuration() - Return how long the animal sleeps
+     *
+     * @return The length the animal sleeps in hours
+     */
+    public int getSleepDuration() {
+<span class="fc" id="L126">        return this.sleepDuration_hours;</span>
+    }
+
+    /**
+     * getMovementSpeed() - Returns the max movement speed of the animal
+     *
+     * @return How fast the animal can move in mph
+     */
+    public int getMovementSpeed() {
+<span class="fc" id="L135">        return this.movementSpeed_mph;</span>
+    }
+
+    /**
+     * getIsExtinct() - Returns whether the animal is extinct or not
+     *
+     * @return Returns true or false on whether the animal is extinct
+     */
+    public boolean getIsExtinct() {
+<span class="fc" id="L144">        return this.isExtinct;</span>
+    }
+  
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

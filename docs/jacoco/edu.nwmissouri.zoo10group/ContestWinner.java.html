@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ContestWinner.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ZooGroup10</a> &gt; <a href="index.source.html" class="el_package">edu.nwmissouri.zoo10group</a> &gt; <span class="el_source">ContestWinner.java</span></div><h1>ContestWinner.java</h1><pre class="source lang-java linenums">package edu.nwmissouri.zoo10group;
+
+import java.util.Date;
+/**
+ *
+ * @author Manish Goud Bandharapu
+ */
+public class ContestWinner extends Visitor {
+    
+   
+    private String ContestName;
+    private Date DateOfContest;
+    
+    /**
+     * Initializing Contest Winner
+     * 
+     */
+<span class="fc" id="L18">    public ContestWinner(){</span>
+<span class="fc" id="L19">        this.ContestName= &quot;Ali baba Animals&quot;;</span>
+<span class="fc" id="L20">        this.DateOfContest= new Date();</span>
+<span class="fc" id="L21">        this.entranceFee=50;</span>
+<span class="fc" id="L22">        this.discount=50;</span>
+<span class="fc" id="L23">        this.groupSize=1;</span>
+       
+<span class="fc" id="L25">    }</span>
+
+    /**
+     * Declaring the contest Name
+     * 
+     * @return
+     */
+    public String getContestName() {
+<span class="fc" id="L33">        return ContestName;</span>
+    }
+
+    /**
+     *
+     * @param ContestName
+     */
+    public void setContestName(String ContestName) {
+<span class="fc" id="L41">        this.ContestName = ContestName;</span>
+<span class="fc" id="L42">    }</span>
+
+    /**
+     * Declaring the date of contest
+     * 
+     * @return
+     */
+    public Date getDateOfContest() {
+<span class="fc" id="L50">        return DateOfContest;</span>
+    }
+
+    /**
+     *
+     * @param DateOfContest
+     */
+    public void setDateOfContest(Date DateOfContest) {
+<span class="fc" id="L58">        this.DateOfContest = DateOfContest;</span>
+<span class="fc" id="L59">    }</span>
+
+    /**
+     * Declaring the Entrance fee
+     *  
+     * @return
+     */
+    public double getEntranceFee() {
+<span class="fc" id="L67">        return entranceFee;</span>
+    }
+
+    /**
+     *
+     * @param entranceFee
+     */
+    public void setEntranceFee(double entranceFee) {
+<span class="fc" id="L75">        this.entranceFee = entranceFee;</span>
+<span class="fc" id="L76">    }</span>
+
+    /**
+     * Declaring the discount
+     * @return
+     */
+    public double getDiscount() {
+<span class="fc" id="L83">        return discount;</span>
+    }
+
+    /**
+     *
+     * @param discount
+     */
+    public void setDiscount(double discount) {
+<span class="fc" id="L91">        this.discount = discount;</span>
+<span class="fc" id="L92">    }</span>
+
+    /**
+     * Declaring the group size
+     *  
+     * @return
+     */
+    public int getGroupSize() {
+<span class="fc" id="L100">        return groupSize;</span>
+    }
+
+    /**
+     *
+     * @param groupSize
+     */
+    public void setGroupSize(int groupSize) {
+<span class="fc" id="L108">        this.groupSize = groupSize;</span>
+<span class="fc" id="L109">    }</span>
+    
+
+    
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
