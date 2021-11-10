@@ -70,7 +70,7 @@ public class LifetimeMemberTest {
     public void testGetEntranceFee() {
         System.out.println("getEntranceFee");
         LifetimeMember instance = new LifetimeMember();
-        double expResult = 0.0;
+        double expResult = 50;
         double result = instance.getEntranceFee();
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
@@ -83,7 +83,7 @@ public class LifetimeMemberTest {
     @Test
     public void testSetEntranceFee() {
         System.out.println("setEntranceFee");
-        double entranceFee = 0.0;
+        double entranceFee = 50;
         LifetimeMember instance = new LifetimeMember();
         instance.setEntranceFee(entranceFee);
         // TODO review the generated test code and remove the default call to fail.
