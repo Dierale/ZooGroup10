@@ -47,7 +47,6 @@ public class ContestWinnerTest {
         String expResult = "Ali baba Animals";
         String result = instance.getContestName();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -59,7 +58,6 @@ public class ContestWinnerTest {
         String ContestName = "Ali baba Animals";
         ContestWinner instance = new ContestWinner();
         instance.setContestName(ContestName);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -72,7 +70,6 @@ public class ContestWinnerTest {
         Date expResult = new Date();
         Date result = instance.getDateOfContest();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -84,7 +81,6 @@ public class ContestWinnerTest {
         Date DateOfContest = new Date();
         ContestWinner instance = new ContestWinner();
         instance.setDateOfContest(DateOfContest);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -97,7 +93,6 @@ public class ContestWinnerTest {
         double expResult = 50;
         double result = instance.getEntranceFee();
         assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -109,7 +104,6 @@ public class ContestWinnerTest {
         double entranceFee = 50;
         ContestWinner instance = new ContestWinner();
         instance.setEntranceFee(entranceFee);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -122,7 +116,6 @@ public class ContestWinnerTest {
         double expResult = 50;
         double result = instance.getDiscount();
         assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -134,7 +127,6 @@ public class ContestWinnerTest {
         double discount = 50;
         ContestWinner instance = new ContestWinner();
         instance.setDiscount(discount);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -147,7 +139,6 @@ public class ContestWinnerTest {
         int expResult = 1;
         int result = instance.getGroupSize();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -159,7 +150,6 @@ public class ContestWinnerTest {
         int groupSize = 1;
         ContestWinner instance = new ContestWinner();
         instance.setGroupSize(groupSize);
-        // TODO review the generated test code and remove the default call to fail.
     }
     
 }
