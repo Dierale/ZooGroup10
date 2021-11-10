@@ -17,6 +17,10 @@ Project Contributors:
  - [Hemanth Sai Reddy Velamuri](https://github.com/hemanthsaireddyvelamuri)
  - [Jayanth Naramsetty](https://github.com/jayanthnaramsetty)
 
+Noteable Project Functionalities:
+ - ZooIndexController uses a callAnimalRun() function to dynamically call each Animal subclass's run(). This means we can add more animals at will to our getAnimalList() and it wont need to be updated. As long as the name in the list matches the animal's java file name we're safe
+ - ZooIndexController uses formatLineBreaks() to parse through console output and give Spring neater output. Line breaks are replaced with '\<br>' and as long as the view uses 'th:utext=' instead of 'th:text' it formats
+
 ---
 
 For the initial project design reference view the UML displayed below
