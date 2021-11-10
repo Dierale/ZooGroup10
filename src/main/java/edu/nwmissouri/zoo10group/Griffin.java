@@ -75,8 +75,6 @@ public class Griffin extends Animal implements Runnable {
         String isFound = (getIsExtinct()) ? "yes" : "no";
         System.out.println("Can you find me out in the wild? The answer is "
                 + isFound);
-        System.out.println(speak());
-        System.out.println(move());
     }
     
     /******************************
