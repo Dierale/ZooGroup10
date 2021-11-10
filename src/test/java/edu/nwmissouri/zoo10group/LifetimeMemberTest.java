@@ -46,7 +46,6 @@ public class LifetimeMemberTest {
         int expResult = 0;
         int result = instance.getMembershipDuration();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -58,7 +57,6 @@ public class LifetimeMemberTest {
         int membershipDuration = 0;
         LifetimeMember instance = new LifetimeMember();
         instance.setMembershipDuration(membershipDuration);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -71,7 +69,6 @@ public class LifetimeMemberTest {
         double expResult = 50;
         double result = instance.getEntranceFee();
         assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -83,7 +80,6 @@ public class LifetimeMemberTest {
         double entranceFee = 50;
         LifetimeMember instance = new LifetimeMember();
         instance.setEntranceFee(entranceFee);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -96,7 +92,6 @@ public class LifetimeMemberTest {
         double expResult = 20;
         double result = instance.getDiscount();
         assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -108,7 +103,6 @@ public class LifetimeMemberTest {
         double discount = 20;
         LifetimeMember instance = new LifetimeMember();
         instance.setDiscount(discount);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -121,7 +115,6 @@ public class LifetimeMemberTest {
         int expResult = 1;
         int result = instance.getGroupSize();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -133,7 +126,6 @@ public class LifetimeMemberTest {
         int groupSize = 1;
         LifetimeMember instance = new LifetimeMember();
         instance.setGroupSize(groupSize);
-        // TODO review the generated test code and remove the default call to fail.
     }
     
 }
