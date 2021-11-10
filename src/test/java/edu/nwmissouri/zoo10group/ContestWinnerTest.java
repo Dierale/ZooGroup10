@@ -98,7 +98,7 @@ public class ContestWinnerTest {
     public void testGetEntranceFee() {
         System.out.println("getEntranceFee");
         ContestWinner instance = new ContestWinner();
-        double expResult = 0.0;
+        double expResult = 50;
         double result = instance.getEntranceFee();
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
@@ -111,7 +111,7 @@ public class ContestWinnerTest {
     @Test
     public void testSetEntranceFee() {
         System.out.println("setEntranceFee");
-        double entranceFee = 0.0;
+        double entranceFee = 0;
         ContestWinner instance = new ContestWinner();
         instance.setEntranceFee(entranceFee);
         // TODO review the generated test code and remove the default call to fail.
