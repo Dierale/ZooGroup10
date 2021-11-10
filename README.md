@@ -4,11 +4,11 @@ CS44542 Section 5 (OOP) - Assignments 7 & 8
 
 View Our Project API:
 
-[Click Here - Hosted on GitHub Pages](https://dierale.github.io/ZooGroup10/)
+ - [Click Here - Hosted on GitHub Pages](https://dierale.github.io/ZooGroup10/)
 
 View Our Testing Coverage here:
 
-[Test Coverage Using Jacoco 0.8.7](https://dierale.github.io/ZooGroup10/Zoo10Group-Coverage.html)
+ - [Test Coverage Using Jacoco 0.8.7](https://dierale.github.io/ZooGroup10/Zoo10Group-Coverage.html)
 
 Project Contributors:
  - [Alex Dieringer](https://github.com/Dierale)
