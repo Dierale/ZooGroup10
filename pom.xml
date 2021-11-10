@@ -1,77 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
         
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.5.6</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.5.6</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
         
-	<groupId>edu.nwmissouri.zoo10group</groupId>
-	<artifactId>ZooGroup10</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>ZooGroup10</name>
-	<description>Assignment 7 Group Project for CS44542 Section 5 (OOP)</description>
+    <groupId>edu.nwmissouri.zoo10group</groupId>
+    <artifactId>ZooGroup10</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>ZooGroup10</name>
+    <description>Assignment 7 Group Project for CS44542 Section 5 (OOP)</description>
         
-	<properties>
-            <java.version>17</java.version>
-            <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-            <maven.compiler.source>17</maven.compiler.source>
-            <maven.compiler.target>17</maven.compiler.target>
-	</properties>
+    <properties>
+        <java.version>17</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+    </properties>
         
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
                 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
                 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-			<optional>true</optional>
-		</dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
                 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
-	<build>
-		<plugins>
+    <build>
+        <plugins>
                         
-                        <!-- Spring Boot Plugin to host Web App -->
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
+            <!-- Spring Boot Plugin to host Web App -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
                         
-                        <!-- JavaDoc Plugin -->
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-javadoc-plugin</artifactId>
-                            <version>3.3.1</version>
-                            <configuration>
-                                <reportOutputDirectory>${basedir}</reportOutputDirectory>
-                                <destDir>docs</destDir>
-                                <sourcepath>${basedir}/src/main/java/</sourcepath>
-                                <sourceFileExcludes>     
-                                </sourceFileExcludes>
-                            </configuration>
-                        </plugin> 
+            <!-- JavaDoc Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.3.1</version>
+                <configuration>
+                    <reportOutputDirectory>${basedir}</reportOutputDirectory>
+                    <destDir>docs</destDir>
+                    <sourcepath>${basedir}/src/main/java/</sourcepath>
+                    <sourceFileExcludes>     
+                    </sourceFileExcludes>
+                </configuration>
+            </plugin>
                         
-		</plugins>
-	</build>
+            <!-- Configure JaCoCo plugin so we can display test results -->
+            
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.7</version>
+
+                <executions>
+
+                    <!-- Prepares the property pointing to the JaCoCo runtime agent which
+                    is passed as VM argument when Maven the Surefire plugin is executed. -->
+                    <execution>
+                        <id>pre-unit-test</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                        <configuration>
+                            <!-- Sets the name of the property containing the settings for JaCoCo
+                            runtime agent. -->
+                            <propertyName>surefireArgLine</propertyName>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>post-unit-test</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+
+                </executions>
+
+            </plugin> 
+                        
+        </plugins>
+    </build>
 
 </project>
