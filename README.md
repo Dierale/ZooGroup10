@@ -6,6 +6,10 @@ View Our Project API:
 
 [Click Here - Hosted on GitHub Pages](https://dierale.github.io/ZooGroup10/)
 
+View Our Testing Coverage here:
+
+[Test Coverage Using Jacoco 0.8.7](https://dierale.github.io/ZooGroup10/Zoo10Group-Coverage.html)
+
 Project Contributors:
  - [Alex Dieringer](https://github.com/Dierale)
  - [Manish Goud Bandharapu](https://github.com/919610362)
@@ -15,7 +19,7 @@ Project Contributors:
 
 ---
 
-For project design reference view the UML displayed below
+For the initial project design reference view the UML displayed below
  - Note: PaymentType is wrongfully linked to Visitor instead of Employee
  - However, code for PaymentType is properly implemented
  - An updated UML with any additional functionality beyond requirements will be added if needed
