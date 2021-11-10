@@ -71,7 +71,7 @@ public class ContestWinnerTest {
     public void testGetDateOfContest() {
         System.out.println("getDateOfContest");
         ContestWinner instance = new ContestWinner();
-        Date expResult = null;
+        Date expResult = new Date();
         Date result = instance.getDateOfContest();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
@@ -84,7 +84,7 @@ public class ContestWinnerTest {
     @Test
     public void testSetDateOfContest() {
         System.out.println("setDateOfContest");
-        Date DateOfContest = null;
+        Date DateOfContest = new Date();
         ContestWinner instance = new ContestWinner();
         instance.setDateOfContest(DateOfContest);
         // TODO review the generated test code and remove the default call to fail.
