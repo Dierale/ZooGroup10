@@ -111,7 +111,7 @@ public class ContestWinnerTest {
     @Test
     public void testSetEntranceFee() {
         System.out.println("setEntranceFee");
-        double entranceFee = 0;
+        double entranceFee = 50;
         ContestWinner instance = new ContestWinner();
         instance.setEntranceFee(entranceFee);
         // TODO review the generated test code and remove the default call to fail.
