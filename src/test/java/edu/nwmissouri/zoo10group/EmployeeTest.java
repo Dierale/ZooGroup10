@@ -83,7 +83,7 @@ public class EmployeeTest {
     public void testGetHoursPerWeek() {
         double expected = 40;
         var cur = new Curator();
-        double result = cur.getPaymentRate();
+        double result = cur.getHoursPerWeek();
         //Curator is defaulted to hours per week of 25
         assertEquals(expected, result);
     }
@@ -113,7 +113,7 @@ public class EmployeeTest {
         // The way we calculate yearly is the same as monthly * 12
         double expected = (25*40*4)*12;
         var cur = new Curator();
-        double result = cur.getPaymentRate();
+        double result = cur.calculateYearlyPay();
         //Curator defaults hourly, 25 paymentRate, 40 hours
         assertEquals(expected, result);
     }
