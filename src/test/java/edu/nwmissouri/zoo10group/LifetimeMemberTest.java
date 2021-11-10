@@ -47,7 +47,6 @@ public class LifetimeMemberTest {
         int result = instance.getMembershipDuration();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -60,7 +59,6 @@ public class LifetimeMemberTest {
         LifetimeMember instance = new LifetimeMember();
         instance.setMembershipDuration(membershipDuration);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -74,7 +72,6 @@ public class LifetimeMemberTest {
         double result = instance.getEntranceFee();
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -87,7 +84,6 @@ public class LifetimeMemberTest {
         LifetimeMember instance = new LifetimeMember();
         instance.setEntranceFee(entranceFee);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -101,7 +97,6 @@ public class LifetimeMemberTest {
         double result = instance.getDiscount();
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -114,7 +109,6 @@ public class LifetimeMemberTest {
         LifetimeMember instance = new LifetimeMember();
         instance.setDiscount(discount);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -124,11 +118,10 @@ public class LifetimeMemberTest {
     public void testGetGroupSize() {
         System.out.println("getGroupSize");
         LifetimeMember instance = new LifetimeMember();
-        int expResult = 0;
+        int expResult = 1;
         int result = instance.getGroupSize();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
@@ -137,11 +130,10 @@ public class LifetimeMemberTest {
     @Test
     public void testSetGroupSize() {
         System.out.println("setGroupSize");
-        int groupSize = 0;
+        int groupSize = 1;
         LifetimeMember instance = new LifetimeMember();
         instance.setGroupSize(groupSize);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }
