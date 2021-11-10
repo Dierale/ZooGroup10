@@ -44,7 +44,6 @@ public class MemberTest {
         System.out.println("visitAnimal");
         Member instance = new Member();
         instance.visitAnimal();
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -57,7 +56,5 @@ public class MemberTest {
         int expResult = 0;
         int result = instance.getAnimalsVisited();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
     }
-    
 }
