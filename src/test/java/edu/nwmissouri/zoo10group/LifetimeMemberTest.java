@@ -97,7 +97,7 @@ public class LifetimeMemberTest {
     public void testGetDiscount() {
         System.out.println("getDiscount");
         LifetimeMember instance = new LifetimeMember();
-        double expResult = 0.0;
+        double expResult = 20;
         double result = instance.getDiscount();
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
@@ -110,7 +110,7 @@ public class LifetimeMemberTest {
     @Test
     public void testSetDiscount() {
         System.out.println("setDiscount");
-        double discount = 0.0;
+        double discount = 20;
         LifetimeMember instance = new LifetimeMember();
         instance.setDiscount(discount);
         // TODO review the generated test code and remove the default call to fail.
