@@ -13,14 +13,18 @@
     <groupId>edu.nwmissouri.zoo10group</groupId>
     <artifactId>ZooGroup10</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
     <name>ZooGroup10</name>
     <description>Assignment 7 Group Project for CS44542 Section 5 (OOP)</description>
         
     <properties>
+		<start-class>edu.nwmissouri.zoo10group.ZooApp</start-class>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.compiler.release>${java.version}</maven.compiler.release>
     </properties>
         
     <dependencies>
