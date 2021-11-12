@@ -5,7 +5,7 @@ We are Group #10 for CS44542 Section 5 (Object Oriented Programming)
 This project is a demonstration of the skills we've learned in OOP. We are building a zoo full of animals to visit and designating types of visitors and employees that work there.  Visitors should be able to specify what membership level they possses, see a resulting fee once they visit, and be able to view the details of the animals at the zoo in a concise manner.  Employees will be able to see their job description, how much they are paid, how often they work, and the animals or exhibits they are in charge of.
 
 ## Visit Our Application on Heroku
-- [Heroku WebApp](https://dashboard.heroku.com/apps/group10zoo/deploy/github)
+- [Heroku WebApp](https://group10zoo.herokuapp.com/)
 
 ## View Our Project API
  - [Click Here - Hosted on GitHub Pages](https://dierale.github.io/ZooGroup10/)
