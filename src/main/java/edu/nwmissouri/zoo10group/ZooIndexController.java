@@ -1,6 +1,10 @@
 package edu.nwmissouri.zoo10group;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,12 +12,16 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.TreeMap;
 import java.lang.reflect.Method;
+import java.net.URI;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.util.ResourceUtils;
 
 /**
  * Controller that handles the default request ("/").
@@ -111,6 +119,7 @@ public class ZooIndexController {
         model.addAttribute("animalMap", getAllAnimalMap());
         model.addAttribute("animalOutput", getAnimalOutput(idParam));
         model.addAttribute("animalImage", getAnimalImageLink(idParam));
+        model.addAttribute("testURL", getTestLink(idParam));
         return "visitor";
     }
 
@@ -217,13 +226,35 @@ public class ZooIndexController {
     private String getAnimalImageLink(String id) {
         var intID = Integer.parseInt(id);
         var myList = Animal.getAnimalList();
-        
-        String imageName = "";
+ 
+        String imageName = "";       
+        String testResult = "";
         if ((intID > 0) && (intID <= myList.length)) {
             imageName = myList[intID - 1];
         }
         imageName = imageName.replace(" ", "_") + ".jpg";
-        return imageName;
+        return imageName;   
+    }
+    
+    private String getTestLink(String id) {
+                var intID = Integer.parseInt(id);
+        var myList = Animal.getAnimalList();
+ 
+        String imageName = "";       
+        String testResult = "";
+        if ((intID > 0) && (intID <= myList.length)) {
+            imageName = myList[intID - 1];
+        }
+        imageName = imageName.replace(" ", "_") + ".jpg";
+        
+        try {
+            File file = ResourceUtils.getFile("images:griffin.jpg");
+            testResult = file.exists() ? "Exists" : "Not Found";
+            //testResult = file.getPath();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ZooIndexController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return testResult;
     }
     
     /**
