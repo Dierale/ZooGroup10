@@ -74,7 +74,7 @@ public class BrachiosaurusTest {
     public void testGetName() throws Exception {
         // set up testing variables
         String expected = "Long Boi";
-        var brach = new Brachiosaurus("Long Boi");
+        var brach = new Brachiosaurus(expected);
         String testName = brach.getName();
 
         assertEquals(expected, testName);
