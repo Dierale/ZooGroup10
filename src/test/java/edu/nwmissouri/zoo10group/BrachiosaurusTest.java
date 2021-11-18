@@ -73,7 +73,7 @@ public class BrachiosaurusTest {
     @Test
     public void testGetName() throws Exception {
         // set up testing variables
-        String expected = "Griffo";
+        String expected = "Long Boi";
         var brach = new Brachiosaurus("Long Boi");
         String testName = brach.getName();
 
