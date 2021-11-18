@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ZooIndexController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ZooGroup10</a> &gt; <a href="index.source.html" class="el_package">edu.nwmissouri.zoo10group</a> &gt; <span class="el_source">ZooIndexController.java</span></div><h1>ZooIndexController.java</h1><pre class="source lang-java linenums">package edu.nwmissouri.zoo10group;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,12 +12,16 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.TreeMap;
 import java.lang.reflect.Method;
+import java.net.URI;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.util.ResourceUtils;
 
 /**
  * Controller that handles the default request (&quot;/&quot;).
@@ -24,7 +32,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author Alex Dieringer
  */
 @Controller
-<span class="fc" id="L27">public class ZooIndexController {</span>
+<span class="fc" id="L35">public class ZooIndexController {</span>
 
     private static final String GREETING_MESSAGE = &quot;Welcome to Group 10's Zoo!&quot;;
     private static final String GOODBYE_MESSAGE = &quot;Thank you for visiting Group 10's Zoo!&quot;;
@@ -40,9 +48,9 @@ import org.springframework.web.bind.annotation.RequestParam;
     public String index(
             @RequestParam(name = &quot;id&quot;, required = false, defaultValue = &quot;0&quot;) String idParam,
             Model model) {
-<span class="nc" id="L43">        model.addAttribute(&quot;id&quot;, idParam);</span>
-<span class="nc" id="L44">        model.addAttribute(&quot;greeting&quot;, GREETING_MESSAGE);</span>
-<span class="nc" id="L45">        return &quot;index&quot;;</span>
+<span class="nc" id="L51">        model.addAttribute(&quot;id&quot;, idParam);</span>
+<span class="nc" id="L52">        model.addAttribute(&quot;greeting&quot;, GREETING_MESSAGE);</span>
+<span class="nc" id="L53">        return &quot;index&quot;;</span>
     }
     
     
@@ -57,12 +65,12 @@ import org.springframework.web.bind.annotation.RequestParam;
     public String zoo(
             @RequestParam(name = &quot;id&quot;, required = false, defaultValue = &quot;0&quot;) String idParam,
             Model model) {
-<span class="nc" id="L60">        model.addAttribute(&quot;id&quot;, idParam);</span>
-<span class="nc" id="L61">        model.addAttribute(&quot;greeting&quot;, GREETING_MESSAGE);</span>
-<span class="nc" id="L62">        model.addAttribute(&quot;animalMap&quot;, getAllAnimalMap());</span>
-<span class="nc" id="L63">        model.addAttribute(&quot;animalOutput&quot;, getAnimalOutput(idParam));</span>
+<span class="nc" id="L68">        model.addAttribute(&quot;id&quot;, idParam);</span>
+<span class="nc" id="L69">        model.addAttribute(&quot;greeting&quot;, GREETING_MESSAGE);</span>
+<span class="nc" id="L70">        model.addAttribute(&quot;animalMap&quot;, getAllAnimalMap());</span>
+<span class="nc" id="L71">        model.addAttribute(&quot;animalOutput&quot;, getAnimalOutput(idParam));</span>
         // associated with index.hmtl in src/main/resources/templates
-<span class="nc" id="L65">        return &quot;zoo&quot;;</span>
+<span class="nc" id="L73">        return &quot;zoo&quot;;</span>
     }
 
     /**
@@ -72,7 +80,7 @@ import org.springframework.web.bind.annotation.RequestParam;
      */
     @GetMapping(path = &quot;/about&quot;)
     public String about() {
-<span class="nc" id="L75">        return &quot;about&quot;;</span>
+<span class="nc" id="L83">        return &quot;about&quot;;</span>
     }
 
     /**
@@ -85,12 +93,12 @@ import org.springframework.web.bind.annotation.RequestParam;
     @GetMapping(path = &quot;/employee&quot;)
     public String employee(
         @RequestParam(name = &quot;employeeType&quot;, required = true) String typeParam, Model model) {
-<span class="nc" id="L88">        model.addAttribute(&quot;type&quot;, typeParam);</span>
-<span class="nc" id="L89">        model.addAttribute(&quot;employeeName&quot;, getEmployeeName(typeParam));</span>
-<span class="nc" id="L90">        model.addAttribute(&quot;employeeDescription&quot;, getEmployeeDescription(typeParam));</span>
-<span class="nc" id="L91">        model.addAttribute(&quot;employeeDetails&quot;, getEmployeeDetails(typeParam));</span>
-<span class="nc" id="L92">        model.addAttribute(&quot;employeeAnimals&quot;, getEmployeeAnimals(typeParam));</span>
-<span class="nc" id="L93">        return &quot;employee&quot;;</span>
+<span class="nc" id="L96">        model.addAttribute(&quot;type&quot;, typeParam);</span>
+<span class="nc" id="L97">        model.addAttribute(&quot;employeeName&quot;, getEmployeeName(typeParam));</span>
+<span class="nc" id="L98">        model.addAttribute(&quot;employeeDescription&quot;, getEmployeeDescription(typeParam));</span>
+<span class="nc" id="L99">        model.addAttribute(&quot;employeeDetails&quot;, getEmployeeDetails(typeParam));</span>
+<span class="nc" id="L100">        model.addAttribute(&quot;employeeAnimals&quot;, getEmployeeAnimals(typeParam));</span>
+<span class="nc" id="L101">        return &quot;employee&quot;;</span>
     }
 
     /**
@@ -105,13 +113,14 @@ import org.springframework.web.bind.annotation.RequestParam;
     public String visitor(
         @RequestParam(name = &quot;visitorType&quot;, required = false, defaultValue = &quot;guest&quot;) String visitorTypeParam,
         @RequestParam(name = &quot;id&quot;, required = false, defaultValue = &quot;0&quot;) String idParam, Model model) {
-<span class="nc" id="L108">        model.addAttribute(&quot;id&quot;, idParam);</span>
-<span class="nc" id="L109">        model.addAttribute(&quot;type&quot;, visitorTypeParam);</span>
-<span class="nc" id="L110">        model.addAttribute(&quot;payment&quot;, getVisitorPayment(visitorTypeParam));</span>
-<span class="nc" id="L111">        model.addAttribute(&quot;animalMap&quot;, getAllAnimalMap());</span>
-<span class="nc" id="L112">        model.addAttribute(&quot;animalOutput&quot;, getAnimalOutput(idParam));</span>
-<span class="nc" id="L113">        model.addAttribute(&quot;animalImage&quot;, getAnimalImageLink(idParam));</span>
-<span class="nc" id="L114">        return &quot;visitor&quot;;</span>
+<span class="nc" id="L116">        model.addAttribute(&quot;id&quot;, idParam);</span>
+<span class="nc" id="L117">        model.addAttribute(&quot;type&quot;, visitorTypeParam);</span>
+<span class="nc" id="L118">        model.addAttribute(&quot;payment&quot;, getVisitorPayment(visitorTypeParam));</span>
+<span class="nc" id="L119">        model.addAttribute(&quot;animalMap&quot;, getAllAnimalMap());</span>
+<span class="nc" id="L120">        model.addAttribute(&quot;animalOutput&quot;, getAnimalOutput(idParam));</span>
+<span class="nc" id="L121">        model.addAttribute(&quot;animalImage&quot;, getAnimalImageLink(idParam));</span>
+<span class="nc" id="L122">        model.addAttribute(&quot;testURL&quot;, getTestLink(idParam));</span>
+<span class="nc" id="L123">        return &quot;visitor&quot;;</span>
     }
 
     /**
@@ -121,21 +130,21 @@ import org.springframework.web.bind.annotation.RequestParam;
      * @param animalName    The animal's name required in its constructor
      */
     private static void callAnimalRun(String className, String animalName) {
-<span class="nc" id="L124">        String myPackage = &quot;edu.nwmissouri.zoo10group&quot;;</span>
-<span class="nc" id="L125">        Class[] cArg = new Class[1];</span>
-<span class="nc" id="L126">        cArg[0] = String.class;</span>
-<span class="nc" id="L127">        Class noparams[] = {};</span>
+<span class="nc" id="L133">        String myPackage = &quot;edu.nwmissouri.zoo10group&quot;;</span>
+<span class="nc" id="L134">        Class[] cArg = new Class[1];</span>
+<span class="nc" id="L135">        cArg[0] = String.class;</span>
+<span class="nc" id="L136">        Class noparams[] = {};</span>
 
-<span class="nc" id="L129">        String fullClass = myPackage + &quot;.&quot; + className.replace(&quot; &quot;, &quot;&quot;);</span>
+<span class="nc" id="L138">        String fullClass = myPackage + &quot;.&quot; + className.replace(&quot; &quot;, &quot;&quot;);</span>
         try {
-<span class="nc" id="L131">            Class&lt;?&gt; animalClass = Class.forName(fullClass);</span>
-<span class="nc" id="L132">            Object obj = animalClass.getDeclaredConstructor(cArg).newInstance(animalName);</span>
-<span class="nc" id="L133">            Method method = animalClass.getDeclaredMethod(&quot;run&quot;, noparams);</span>
-<span class="nc" id="L134">            method.invoke(obj, null);</span>
-<span class="nc" id="L135">        } catch (Exception ex) {</span>
-<span class="nc" id="L136">            ex.printStackTrace();</span>
-<span class="nc" id="L137">        }</span>
-<span class="nc" id="L138">    }</span>
+<span class="nc" id="L140">            Class&lt;?&gt; animalClass = Class.forName(fullClass);</span>
+<span class="nc" id="L141">            Object obj = animalClass.getDeclaredConstructor(cArg).newInstance(animalName);</span>
+<span class="nc" id="L142">            Method method = animalClass.getDeclaredMethod(&quot;run&quot;, noparams);</span>
+<span class="nc" id="L143">            method.invoke(obj, null);</span>
+<span class="nc" id="L144">        } catch (Exception ex) {</span>
+<span class="nc" id="L145">            ex.printStackTrace();</span>
+<span class="nc" id="L146">        }</span>
+<span class="nc" id="L147">    }</span>
 
     /**
      * Gets the output of the animal's run() function
@@ -146,26 +155,26 @@ import org.springframework.web.bind.annotation.RequestParam;
      */
     private String getAnimalOutput(String id) {
         // Create a stream to hold the output
-<span class="nc" id="L149">        var newStream = new ByteArrayOutputStream();</span>
-<span class="nc" id="L150">        var newPrintStream = new PrintStream(newStream);</span>
+<span class="nc" id="L158">        var newStream = new ByteArrayOutputStream();</span>
+<span class="nc" id="L159">        var newPrintStream = new PrintStream(newStream);</span>
 
         // IMPORTANT: Save the old System.out!
-<span class="nc" id="L153">        PrintStream old = System.out;</span>
+<span class="nc" id="L162">        PrintStream old = System.out;</span>
         // Tell Java to use your special stream
-<span class="nc" id="L155">        System.setOut(newPrintStream);</span>
+<span class="nc" id="L164">        System.setOut(newPrintStream);</span>
 
-<span class="nc" id="L157">        var intID = Integer.parseInt(id);</span>
-<span class="nc" id="L158">        var myList = Animal.getAnimalList();</span>
+<span class="nc" id="L166">        var intID = Integer.parseInt(id);</span>
+<span class="nc" id="L167">        var myList = Animal.getAnimalList();</span>
 
-<span class="nc bnc" id="L160" title="All 4 branches missed.">        if ((intID &gt; 0) &amp;&amp; (intID &lt;= myList.length)) {</span>
-<span class="nc" id="L161">            callAnimalRun(myList[intID - 1], myList[intID - 1] + &quot; Tester&quot;);</span>
+<span class="nc bnc" id="L169" title="All 4 branches missed.">        if ((intID &gt; 0) &amp;&amp; (intID &lt;= myList.length)) {</span>
+<span class="nc" id="L170">            callAnimalRun(myList[intID - 1], myList[intID - 1] + &quot; Tester&quot;);</span>
         }
 
         // Put things back
-<span class="nc" id="L165">        System.out.flush();</span>
-<span class="nc" id="L166">        System.setOut(old);</span>
-<span class="nc" id="L167">        String stringOutput = newStream.toString();</span>
-<span class="nc" id="L168">        return formatLineBreaks( stringOutput);</span>
+<span class="nc" id="L174">        System.out.flush();</span>
+<span class="nc" id="L175">        System.setOut(old);</span>
+<span class="nc" id="L176">        String stringOutput = newStream.toString();</span>
+<span class="nc" id="L177">        return formatLineBreaks( stringOutput);</span>
     }
 
     /**
@@ -174,38 +183,38 @@ import org.springframework.web.bind.annotation.RequestParam;
      * @return  The map of ID and animal key value pairs
      */
     public static Map&lt;Integer, String&gt; getAllAnimalMap() {
-<span class="nc" id="L177">        String[] animals = Animal.getAnimalList();</span>
-<span class="nc" id="L178">        int animalCount = animals.length;</span>
-<span class="nc" id="L179">        Map animalMap = Collections.synchronizedMap(new TreeMap&lt;Integer, String&gt;());</span>
+<span class="nc" id="L186">        String[] animals = Animal.getAnimalList();</span>
+<span class="nc" id="L187">        int animalCount = animals.length;</span>
+<span class="nc" id="L188">        Map animalMap = Collections.synchronizedMap(new TreeMap&lt;Integer, String&gt;());</span>
 
-<span class="nc bnc" id="L181" title="All 2 branches missed.">        for (int n = 0; n &lt; animalCount; n++) {</span>
-<span class="nc" id="L182">            animalMap.put((n + 1), animals[n]);</span>
+<span class="nc bnc" id="L190" title="All 2 branches missed.">        for (int n = 0; n &lt; animalCount; n++) {</span>
+<span class="nc" id="L191">            animalMap.put((n + 1), animals[n]);</span>
         }
-<span class="nc" id="L184">        return animalMap;</span>
+<span class="nc" id="L193">        return animalMap;</span>
     }
     
     public static Map&lt;Integer, String&gt; getEmployeeAnimals(String eType) {
-<span class="nc" id="L188">        String[] animals = new String[1];</span>
-<span class="nc bnc" id="L189" title="All 3 branches missed.">        switch( eType) {</span>
+<span class="nc" id="L197">        String[] animals = new String[1];</span>
+<span class="nc bnc" id="L198" title="All 3 branches missed.">        switch( eType) {</span>
             case &quot;curator&quot; -&gt; {
-<span class="nc" id="L191">                Curator cur = new Curator();</span>
-<span class="nc" id="L192">                animals = cur.getExhibits();</span>
-<span class="nc" id="L193">            }</span>
+<span class="nc" id="L200">                Curator cur = new Curator();</span>
+<span class="nc" id="L201">                animals = cur.getExhibits();</span>
+<span class="nc" id="L202">            }</span>
             case &quot;caretaker&quot; -&gt; {
-<span class="nc" id="L195">                Caretaker caret = new Caretaker();</span>
-<span class="nc" id="L196">                animals[0] = caret.getAnimalAssignment();</span>
-<span class="nc" id="L197">            }</span>
+<span class="nc" id="L204">                Caretaker caret = new Caretaker();</span>
+<span class="nc" id="L205">                animals[0] = caret.getAnimalAssignment();</span>
+<span class="nc" id="L206">            }</span>
             default -&gt; {
-<span class="nc" id="L199">                animals[0] = &quot;&quot;;</span>
+<span class="nc" id="L208">                animals[0] = &quot;&quot;;</span>
             }
         }
-<span class="nc" id="L202">        int animalCount = animals.length;</span>
-<span class="nc" id="L203">        Map animalMap = Collections.synchronizedMap(new TreeMap&lt;Integer, String&gt;());</span>
+<span class="nc" id="L211">        int animalCount = animals.length;</span>
+<span class="nc" id="L212">        Map animalMap = Collections.synchronizedMap(new TreeMap&lt;Integer, String&gt;());</span>
 
-<span class="nc bnc" id="L205" title="All 2 branches missed.">        for (int n = 0; n &lt; animalCount; n++) {</span>
-<span class="nc" id="L206">            animalMap.put((n + 1), animals[n]);</span>
+<span class="nc bnc" id="L214" title="All 2 branches missed.">        for (int n = 0; n &lt; animalCount; n++) {</span>
+<span class="nc" id="L215">            animalMap.put((n + 1), animals[n]);</span>
         }
-<span class="nc" id="L208">        return animalMap;</span>
+<span class="nc" id="L217">        return animalMap;</span>
     }
     
     /**
@@ -215,15 +224,37 @@ import org.springframework.web.bind.annotation.RequestParam;
      * @return      Return the file name of the animal's image
      */
     private String getAnimalImageLink(String id) {
-<span class="nc" id="L218">        var intID = Integer.parseInt(id);</span>
-<span class="nc" id="L219">        var myList = Animal.getAnimalList();</span>
-        
-<span class="nc" id="L221">        String imageName = &quot;&quot;;</span>
-<span class="nc bnc" id="L222" title="All 4 branches missed.">        if ((intID &gt; 0) &amp;&amp; (intID &lt;= myList.length)) {</span>
-<span class="nc" id="L223">            imageName = myList[intID - 1];</span>
+<span class="nc" id="L227">        var intID = Integer.parseInt(id);</span>
+<span class="nc" id="L228">        var myList = Animal.getAnimalList();</span>
+ 
+<span class="nc" id="L230">        String imageName = &quot;&quot;;       </span>
+<span class="nc" id="L231">        String testResult = &quot;&quot;;</span>
+<span class="nc bnc" id="L232" title="All 4 branches missed.">        if ((intID &gt; 0) &amp;&amp; (intID &lt;= myList.length)) {</span>
+<span class="nc" id="L233">            imageName = myList[intID - 1];</span>
         }
-<span class="nc" id="L225">        imageName = imageName.replace(&quot; &quot;, &quot;_&quot;) + &quot;.jpg&quot;;</span>
-<span class="nc" id="L226">        return imageName;</span>
+<span class="nc" id="L235">        imageName = imageName.replace(&quot; &quot;, &quot;_&quot;) + &quot;.jpg&quot;;</span>
+<span class="nc" id="L236">        return imageName;   </span>
+    }
+    
+    private String getTestLink(String id) {
+<span class="nc" id="L240">                var intID = Integer.parseInt(id);</span>
+<span class="nc" id="L241">        var myList = Animal.getAnimalList();</span>
+ 
+<span class="nc" id="L243">        String imageName = &quot;&quot;;       </span>
+<span class="nc" id="L244">        String testResult = &quot;&quot;;</span>
+<span class="nc bnc" id="L245" title="All 4 branches missed.">        if ((intID &gt; 0) &amp;&amp; (intID &lt;= myList.length)) {</span>
+<span class="nc" id="L246">            imageName = myList[intID - 1];</span>
+        }
+<span class="nc" id="L248">        imageName = imageName.replace(&quot; &quot;, &quot;_&quot;) + &quot;.jpg&quot;;</span>
+        
+        try {
+<span class="nc" id="L251">            File file = ResourceUtils.getFile(&quot;images:griffin.jpg&quot;);</span>
+<span class="nc bnc" id="L252" title="All 2 branches missed.">            testResult = file.exists() ? &quot;Exists&quot; : &quot;Not Found&quot;;</span>
+            //testResult = file.getPath();
+<span class="nc" id="L254">        } catch (FileNotFoundException ex) {</span>
+<span class="nc" id="L255">            Logger.getLogger(ZooIndexController.class.getName()).log(Level.SEVERE, null, ex);</span>
+<span class="nc" id="L256">        }</span>
+<span class="nc" id="L257">        return testResult;</span>
     }
     
     /**
@@ -234,33 +265,33 @@ import org.springframework.web.bind.annotation.RequestParam;
      */
     private String getEmployeeDetails(String empType) {
         // Create a stream to hold the output
-<span class="nc" id="L237">        var newStream = new ByteArrayOutputStream();</span>
-<span class="nc" id="L238">        var newPrintStream = new PrintStream(newStream);</span>
+<span class="nc" id="L268">        var newStream = new ByteArrayOutputStream();</span>
+<span class="nc" id="L269">        var newPrintStream = new PrintStream(newStream);</span>
 
         // IMPORTANT: Save the old System.out!
-<span class="nc" id="L241">        PrintStream old = System.out;</span>
+<span class="nc" id="L272">        PrintStream old = System.out;</span>
         // Tell Java to use your special stream
-<span class="nc" id="L243">        System.setOut(newPrintStream);</span>
+<span class="nc" id="L274">        System.setOut(newPrintStream);</span>
 
-<span class="nc bnc" id="L245" title="All 3 branches missed.">        switch( empType) {</span>
+<span class="nc bnc" id="L276" title="All 3 branches missed.">        switch( empType) {</span>
             case &quot;curator&quot; -&gt; {
-<span class="nc" id="L247">                Curator cur = new Curator();</span>
-<span class="nc" id="L248">                cur.run();</span>
-<span class="nc" id="L249">            }</span>
+<span class="nc" id="L278">                Curator cur = new Curator();</span>
+<span class="nc" id="L279">                cur.run();</span>
+<span class="nc" id="L280">            }</span>
             case &quot;caretaker&quot; -&gt; {
-<span class="nc" id="L251">                Caretaker caret = new Caretaker();</span>
-<span class="nc" id="L252">                caret.run();</span>
-<span class="nc" id="L253">            }</span>
+<span class="nc" id="L282">                Caretaker caret = new Caretaker();</span>
+<span class="nc" id="L283">                caret.run();</span>
+<span class="nc" id="L284">            }</span>
             default -&gt; {
                 
             }
         }
 
         // Put things back
-<span class="nc" id="L260">        System.out.flush();</span>
-<span class="nc" id="L261">        System.setOut(old);</span>
-<span class="nc" id="L262">        String stringOutput = newStream.toString();</span>
-<span class="nc" id="L263">        return formatLineBreaks( stringOutput);</span>
+<span class="nc" id="L291">        System.out.flush();</span>
+<span class="nc" id="L292">        System.setOut(old);</span>
+<span class="nc" id="L293">        String stringOutput = newStream.toString();</span>
+<span class="nc" id="L294">        return formatLineBreaks( stringOutput);</span>
     }
     
     /**
@@ -270,21 +301,21 @@ import org.springframework.web.bind.annotation.RequestParam;
      * @return      The employee's title as a String
      */
     private String getEmployeeName(String type) {
-<span class="nc" id="L273">        String myName = &quot;&quot;;</span>
-<span class="nc bnc" id="L274" title="All 3 branches missed.">        switch (type) {</span>
+<span class="nc" id="L304">        String myName = &quot;&quot;;</span>
+<span class="nc bnc" id="L305" title="All 3 branches missed.">        switch (type) {</span>
             case &quot;curator&quot; -&gt; {
-<span class="nc" id="L276">                Curator cur = new Curator();</span>
-<span class="nc" id="L277">                myName = cur.getEmployeeTitle();</span>
-<span class="nc" id="L278">            }</span>
+<span class="nc" id="L307">                Curator cur = new Curator();</span>
+<span class="nc" id="L308">                myName = cur.getEmployeeTitle();</span>
+<span class="nc" id="L309">            }</span>
             case &quot;caretaker&quot; -&gt; {
-<span class="nc" id="L280">                Caretaker caret = new Caretaker();</span>
-<span class="nc" id="L281">                myName = caret.getEmployeeTitle();</span>
-<span class="nc" id="L282">            }</span>
+<span class="nc" id="L311">                Caretaker caret = new Caretaker();</span>
+<span class="nc" id="L312">                myName = caret.getEmployeeTitle();</span>
+<span class="nc" id="L313">            }</span>
             default -&gt; {
                 
             }
         }
-<span class="nc" id="L287">        return myName;</span>
+<span class="nc" id="L318">        return myName;</span>
     }
     
     /**
@@ -294,21 +325,21 @@ import org.springframework.web.bind.annotation.RequestParam;
      * @return      The employee's job description as a String
      */
     private String getEmployeeDescription(String type) {
-<span class="nc" id="L297">        String description = &quot;&quot;;</span>
-<span class="nc bnc" id="L298" title="All 3 branches missed.">        switch (type) {</span>
+<span class="nc" id="L328">        String description = &quot;&quot;;</span>
+<span class="nc bnc" id="L329" title="All 3 branches missed.">        switch (type) {</span>
             case &quot;curator&quot; -&gt; {
-<span class="nc" id="L300">                Curator cur = new Curator();</span>
-<span class="nc" id="L301">                description = cur.getJobDescription();</span>
-<span class="nc" id="L302">            }</span>
+<span class="nc" id="L331">                Curator cur = new Curator();</span>
+<span class="nc" id="L332">                description = cur.getJobDescription();</span>
+<span class="nc" id="L333">            }</span>
             case &quot;caretaker&quot; -&gt; {
-<span class="nc" id="L304">                Caretaker caret = new Caretaker();</span>
-<span class="nc" id="L305">                description = caret.getJobDescription();</span>
-<span class="nc" id="L306">            }</span>
+<span class="nc" id="L335">                Caretaker caret = new Caretaker();</span>
+<span class="nc" id="L336">                description = caret.getJobDescription();</span>
+<span class="nc" id="L337">            }</span>
             default -&gt; {
                 
             }
         }
-<span class="nc" id="L311">        return description;</span>
+<span class="nc" id="L342">        return description;</span>
     }
         
     /**
@@ -318,30 +349,30 @@ import org.springframework.web.bind.annotation.RequestParam;
      * @return          The visitor's entry fee converted from double to a string
      */
     public String getVisitorPayment( String vType) {
-<span class="nc" id="L321">        String payment = &quot;(You have paid an entry fee of $&quot;;</span>
-<span class="nc bnc" id="L322" title="All 5 branches missed.">        switch (vType) {</span>
+<span class="nc" id="L352">        String payment = &quot;(You have paid an entry fee of $&quot;;</span>
+<span class="nc bnc" id="L353" title="All 5 branches missed.">        switch (vType) {</span>
             case &quot;guest&quot; -&gt; {
-<span class="nc" id="L324">                Guest gus = new Guest();</span>
-<span class="nc" id="L325">                payment += gus.getGroupCost();</span>
-<span class="nc" id="L326">            }</span>
+<span class="nc" id="L355">                Guest gus = new Guest();</span>
+<span class="nc" id="L356">                payment += gus.getGroupCost();</span>
+<span class="nc" id="L357">            }</span>
             case &quot;member&quot; -&gt; {
-<span class="nc" id="L328">                Member mem = new Member();</span>
-<span class="nc" id="L329">                payment += + mem.getGroupCost();</span>
-<span class="nc" id="L330">            }</span>
+<span class="nc" id="L359">                Member mem = new Member();</span>
+<span class="nc" id="L360">                payment += + mem.getGroupCost();</span>
+<span class="nc" id="L361">            }</span>
             case &quot;lifetimemember&quot; -&gt; {
-<span class="nc" id="L332">                LifetimeMember lmem = new LifetimeMember();</span>
-<span class="nc" id="L333">                payment += + lmem.getGroupCost();</span>
-<span class="nc" id="L334">            }</span>
+<span class="nc" id="L363">                LifetimeMember lmem = new LifetimeMember();</span>
+<span class="nc" id="L364">                payment += + lmem.getGroupCost();</span>
+<span class="nc" id="L365">            }</span>
             case &quot;contestwinner&quot; -&gt; {
-<span class="nc" id="L336">                ContestWinner cwin = new ContestWinner();</span>
-<span class="nc" id="L337">                payment += + cwin.getGroupCost();</span>
-<span class="nc" id="L338">            }</span>
+<span class="nc" id="L367">                ContestWinner cwin = new ContestWinner();</span>
+<span class="nc" id="L368">                payment += + cwin.getGroupCost();</span>
+<span class="nc" id="L369">            }</span>
             default -&gt; {
                 
             }
         }
-<span class="nc" id="L343">        payment += &quot;)&quot;;</span>
-<span class="nc" id="L344">        return payment;</span>
+<span class="nc" id="L374">        payment += &quot;)&quot;;</span>
+<span class="nc" id="L375">        return payment;</span>
     }
     
     /**
@@ -351,8 +382,8 @@ import org.springframework.web.bind.annotation.RequestParam;
      * @return          The text with line breaks replaced as &lt;br&gt;
      */
     public String formatLineBreaks(String output) {
-<span class="nc" id="L354">        String formattedOutput = output.replace(&quot;\n&quot;, &quot;&lt;br&gt;&quot;).replace(&quot;\r&quot;, &quot;&lt;br&gt;&quot;);</span>
-<span class="nc" id="L355">        return formattedOutput;</span>
+<span class="nc" id="L385">        String formattedOutput = output.replace(&quot;\n&quot;, &quot;&lt;br&gt;&quot;).replace(&quot;\r&quot;, &quot;&lt;br&gt;&quot;);</span>
+<span class="nc" id="L386">        return formattedOutput;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

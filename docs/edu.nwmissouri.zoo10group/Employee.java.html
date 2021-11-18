@@ -67,8 +67,8 @@
      * @return  The employee's monthly pay as a double
      */
     public double calculateMonthlyPay() {
-<span class="pc bpc" id="L70" title="1 of 2 branches missed.">        if(this.employeePaymentType == PaymentType.SALARY) {</span>
-<span class="nc" id="L71">            return (this.paymentRate/12);</span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">        if(this.employeePaymentType == PaymentType.SALARY) {</span>
+<span class="fc" id="L71">            return (this.paymentRate/12);</span>
 <span class="pc bpc" id="L72" title="1 of 2 branches missed.">        } else if (this.employeePaymentType == PaymentType.HOURLY) {</span>
 <span class="fc" id="L73">            return (this.paymentRate * this.hoursWorked * 4);</span>
         } else {
