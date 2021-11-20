@@ -52,26 +52,6 @@ public class ZooIndexController {
         model.addAttribute("greeting", GREETING_MESSAGE);
         return "index";
     }
-    
-    
-    /**
-     * Map GET request to "/zoo" to zoo().
-     *
-     * @param idParam - the animal's ID
-     * @param model - the model that holds info from controller to view
-     * @return filename from src/main/resources/templates folder
-     */
-    @GetMapping(path = "/zoo")
-    public String zoo(
-            @RequestParam(name = "id", required = false, defaultValue = "0") String idParam,
-            Model model) {
-        model.addAttribute("id", idParam);
-        model.addAttribute("greeting", GREETING_MESSAGE);
-        model.addAttribute("animalMap", getAllAnimalMap());
-        model.addAttribute("animalOutput", getAnimalOutput(idParam));
-        // associated with index.hmtl in src/main/resources/templates
-        return "zoo";
-    }
 
     /**
      * Map GET request to "/about" to about().
@@ -108,18 +88,18 @@ public class ZooIndexController {
      * @param idParam
      * @param model - the model that holds info from controller to view
      * @return filename from src/main/resources/templates folder
+     * @throws java.io.FileNotFoundException
      */
     @GetMapping(path = "/visitor")
     public String visitor(
         @RequestParam(name = "visitorType", required = false, defaultValue = "guest") String visitorTypeParam,
-        @RequestParam(name = "id", required = false, defaultValue = "0") String idParam, Model model) {
+        @RequestParam(name = "id", required = false, defaultValue = "0") String idParam, Model model) throws FileNotFoundException {
         model.addAttribute("id", idParam);
         model.addAttribute("type", visitorTypeParam);
         model.addAttribute("payment", getVisitorPayment(visitorTypeParam));
         model.addAttribute("animalMap", getAllAnimalMap());
         model.addAttribute("animalOutput", getAnimalOutput(idParam));
         model.addAttribute("animalImage", getAnimalImageLink(idParam));
-        model.addAttribute("testURL", getTestLink(idParam));
         return "visitor";
     }
 
@@ -236,8 +216,8 @@ public class ZooIndexController {
         return imageName;   
     }
     
-    private String getTestLink(String id) {
-                var intID = Integer.parseInt(id);
+    private String getTestLink(String id) throws FileNotFoundException{
+        var intID = Integer.parseInt(id);
         var myList = Animal.getAnimalList();
  
         String imageName = "";       
@@ -248,13 +228,13 @@ public class ZooIndexController {
         imageName = imageName.replace(" ", "_") + ".jpg";
         
         try {
-            File file = ResourceUtils.getFile("images:griffin.jpg");
+            File file = ResourceUtils.getFile("/images/" + imageName);
             testResult = file.exists() ? "Exists" : "Not Found";
             //testResult = file.getPath();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(ZooIndexController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return testResult;
+        return ""+testResult;
     }
     
     /**
