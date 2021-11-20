@@ -212,7 +212,7 @@ public class ZooIndexController {
         if ((intID > 0) && (intID <= myList.length)) {
             imageName = myList[intID - 1];
         }
-        imageName = imageName.replace(" ", "_") + ".jpg";
+        imageName = imageName.replace(" ", "_").toLowerCase() + ".jpg";
         return imageName;   
     }
     
